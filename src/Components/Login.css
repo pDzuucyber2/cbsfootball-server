@@ -1,0 +1,153 @@
+/* Login.css */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #090909;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Semi-transparent login box */
+.login-container {
+    max-width: 400px;
+    width: 80%;
+    padding: 2px;
+  
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 150, 173, 0.2);
+    font-family: Arial, sans-serif;
+}
+
+
+  
+  .login-logo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .login-logo img {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .login-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #434b55;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-group label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #08ffb1;
+  }
+  
+  .input-group input {
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #4e6576;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  
+  .input-group input:focus {
+    border-color: #007bff;
+  }
+  
+  .password-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-container input {
+    flex: 1;
+  }
+  
+  .toggle-password {
+    background: none;
+    border: none;
+    margin-left: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #556970;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #007bff;
+
+    color: rgb(73, 66, 66);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .login-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .login-button:disabled {
+    background-color: #99cfff;
+    cursor: not-allowed;
+  }
+  
+  .error-text {
+    color: #ff3333;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .register-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .register-link a {
+    color: #193d44;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .register-link a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Security code styling */
+  .input-group span {
+    background-color: #473a3a;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-align: center;
+    display: inline-block;
+  }
+
+
+
+
+
+  .search-input {
+    width: 300px;       /* Upande wa input field */
+    padding: 10px;      /* Nafasi ndani ya box */
+    font-size: 18px;    /* Hii inakua font size */
+    border-radius: 6px; /* Corners zenye radius kidogo */
+    border: 1px solid #ccc;
+    margin-bottom: 20px; /* Nafasi chini ya input */
+  }

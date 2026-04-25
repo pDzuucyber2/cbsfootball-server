@@ -1,0 +1,106 @@
+/* CONTAINER */
+.deposit-container {
+  height: 60vh; /* 🔥 full screen */
+  background: linear-gradient(180deg,#081c34,#a5890d,#0b1d2a);
+  color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;   /* center vertically */
+  align-items: center;       /* center horizontally */
+
+  font-family: Arial;
+  text-align: center;
+  padding: 20px;
+}
+
+/* TITLE */
+.deposit-container h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+/* SUBTITLE */
+.subtitle {
+  color: #ccc;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+/* OPTIONS */
+.options {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* CARD */
+.option {
+  border: 2px solid #333;
+  padding: 10px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 150px;
+  transition: 0.3s;
+  background: rgba(0,0,0,0.2);
+}
+
+/* CRYPTO */
+.crypto {
+  border-color: #fff;
+}
+
+.crypto span {
+  color: orange;
+  font-size: 14px;
+}
+
+.crypto small {
+  color: #00ff88;
+  font-size: 11px;
+}
+
+/* BANK */
+.bank {
+  border-color: orange;
+}
+
+.bank span {
+  color: #fff;
+  font-size: 14px;
+}
+
+/* HOVER */
+.option:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+
+.back-btn {
+  background: rgba(255,255,255,0.15);
+  border: left;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* ACTIVE PRESS EFFECT */
+.back-btn:active {
+  transform: scale(0.95);
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 400px) {
+  .option {
+    width: 130px;
+    padding: 8px;
+  }
+
+  .deposit-container h1 {
+    font-size: 20px;
+  }
+}

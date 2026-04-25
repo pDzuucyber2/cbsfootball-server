@@ -1,0 +1,17 @@
+.report-container {
+  padding: 15px;
+  background: #0f0f0f;
+  min-height: 100vh;
+  color: white;
+}
+
+.report-card {
+  background: #1c1c1c;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.report-card h3 {
+  margin: 5px 0;
+}

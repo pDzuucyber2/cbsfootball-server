@@ -1,0 +1,92 @@
+.crash-page {
+  min-height: 100vh;
+  background: #020617;
+  color: white;
+  padding: 12px;
+  padding-bottom: 92px;
+}
+
+.crash-top,
+.crash-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin-bottom: 4px;
+}
+
+.crash-card,
+.crash-bet-center {
+  background: #111827;
+  border: 2px solid #06b6d4;
+  border-radius: 16px;
+  padding: 6px;
+  text-align: center;
+}
+
+.crash-screen {
+  height: 220px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #0f172a, #1e293b);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.rocket {
+  font-size: 50px;
+  transition: transform 0.2s linear;
+}
+
+.rocket.fly {
+  animation: flyRocket 1s linear infinite alternate;
+}
+
+@keyframes flyRocket {
+  from { transform: translate(-20px, 10px); }
+  to { transform: translate(20px, -30px); }
+}
+
+.crash-bet-row {
+  display: grid;
+  grid-template-columns: 70px 1fr 70px;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.crash-bet-row button {
+  border: none;
+  border-radius: 14px;
+  background: #1e293b;
+  color: white;
+  font-size: 18px;
+}
+
+.crash-bet-center input {
+  width: 100%;
+  padding: 1px;
+  border-radius: 10px;
+  border: none;
+  font-size: 10px;
+  text-align: center;
+}
+
+.start-btn,
+.cash-btn {
+  border: none;
+  border-radius: 16px;
+  padding: 8px;
+  font-weight: 900;
+  color: white;
+}
+
+.start-btn { background: #10b981; }
+.cash-btn { background: #f59e0b; }
+
+.crash-message {
+  text-align: center;
+  margin-top: 16px;
+  color: #facc15;
+  font-weight: 800;
+}

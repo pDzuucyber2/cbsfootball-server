@@ -1,0 +1,129 @@
+/* 🎮 Responsible Gaming - ContractBetscoreFootball */
+
+.rg-page {
+  background: #0f172a;
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+.rg-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #111827;
+  border-radius: 12px;
+}
+
+.rg-header h2 {
+  margin: 0;
+  font-size: 26px;
+  color: #22c55e;
+}
+
+.rg-header p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+/* LANGUAGE SWITCH */
+.lang-switch {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.lang-switch button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #1f2937;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.lang-switch button:hover {
+  background: #22c55e;
+  color: #000;
+}
+
+/* CONTAINER */
+.rg-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* CARD */
+.rg-card {
+  background: #111827;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #1f2937;
+}
+
+/* TITLE BUTTON */
+.rg-title {
+  width: 100%;
+  background: #1f2937;
+  color: #fff;
+  padding: 14px;
+  border: none;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.rg-title:hover {
+  background: #374151;
+}
+
+/* CONTENT */
+.rg-content {
+  padding: 15px;
+  background: #0b1220;
+}
+
+.rg-content ul {
+  padding-left: 20px;
+}
+
+.rg-content li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+/* SPECIAL WARNING (fraud / underage) */
+.rg-card:nth-child(6),
+.rg-card:nth-child(7) {
+  border: 1px solid #ef4444;
+}
+
+.rg-card:nth-child(6) .rg-title,
+.rg-card:nth-child(7) .rg-title {
+  background: #7f1d1d;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .rg-header h2 {
+    font-size: 20px;
+  }
+
+  .rg-title {
+    font-size: 14px;
+  }
+
+  .rg-content li {
+    font-size: 13px;
+  }
+}

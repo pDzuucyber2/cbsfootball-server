@@ -1,0 +1,314 @@
+
+.lucky-spin-page {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1f2345 0%, #0b1022 60%, #060913 100%);
+  color: #fff;
+  padding: 4px;
+  padding-bottom: 110px;
+  text-align: center;
+}
+
+.lucky-ticker {
+  border: 2px solid #00d084;
+  border-radius: 30px;
+  padding: 1px 14px;
+  margin-bottom: 2px;
+  color: #ffd54f;
+  font-weight: 800;
+  font-size: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 14px rgba(0, 208, 132, 0.25);
+}
+
+.wheel-stage {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  margin: 0 auto 22px;
+}
+
+.wheel-pointer {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  border-left: 34px solid #ffb48a;
+  z-index: 20;
+  filter: drop-shadow(0 0 4px rgba(255, 180, 138, 0.7));
+}
+
+.lucky-wheel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 8px solid #d28a52;
+  overflow: hidden;
+  transition: transform 5.5s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+  box-shadow:
+    0 0 0 4px #6b3f22,
+    0 0 25px rgba(255, 193, 7, 0.2);
+}
+
+.wheel-segment {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 0;
+  left: 50%;
+  transform-origin: 0% 100%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.segment-content {
+  position: absolute;
+  left: -8px;
+  bottom: 22px;
+  width: 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 900;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+}
+
+.segment-content span {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.segment-content small {
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.wheel-center {
+  position: absolute;
+  inset: 50%;
+  width: 120px;
+  height: 120px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, #b924ff 0%, #5a1599 100%);
+  border: 5px solid #f7b267;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 18px rgba(217, 70, 239, 0.45);
+}
+
+.wheel-center span {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.bet-board {
+  display: grid;
+  grid-template-columns: 70px 1fr 70px;
+  gap: 10px;
+  align-items: stretch;
+  margin-bottom: 20px;
+}
+
+.bet-adjust-btn {
+  border: 2px solid #00c48c;
+  background: linear-gradient(180deg, #23263a, #121628);
+  color: #fff;
+  font-size: 42px;
+  font-weight: 900;
+  border-radius: 19px;
+  min-height: 90px;
+}
+
+.bet-display-box {
+  border: 2px solid #00c48c;
+  border-radius: 19px;
+  padding: 10px;
+  background: linear-gradient(180deg, #1f2336, #111523);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bet-display-box p {
+  margin: 0;
+  color: #13d39b;
+  font-size: 5px;
+  font-weight: 800;
+}
+
+.bet-display-box h2 {
+  margin: 8px 0 4px;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.bet-display-box span {
+  font-size: 2px;
+  color: #ffd54f;
+  font-weight: 700;
+}
+
+.lucky-actions {
+  display: grid;
+  grid-template-columns: 1fr 2.2fr 1fr;
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+.max-btn,
+.spin-main-btn,
+.auto-btn {
+  border: none;
+  border-radius: 14px;
+  min-height: 94px;
+  font-weight: 900;
+  color: #fff;
+  font-size: 19px;
+}
+
+.max-btn {
+  background: linear-gradient(180deg, #ff2e2e, #a00000);
+}
+
+.spin-main-btn {
+  background: linear-gradient(180deg, #1effb2, #00a96e);
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+.auto-btn {
+  background: linear-gradient(180deg, #f0a020, #9a4f00);
+}
+
+.auto-btn.active-auto {
+  background: linear-gradient(180deg, #ef4444, #991b1b);
+}
+
+.lucky-bottom-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.bottom-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 208, 132, 0.25);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.bottom-box p {
+  margin: 0;
+  color: #9ee7cf;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.bottom-box h3 {
+  margin: 8px 0 0;
+  font-size: 19px;
+  font-weight: 900;
+  word-break: break-word;
+}
+
+.lucky-message {
+  min-height: 26px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffd54f;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 420px) {
+  .wheel-stage {
+    width: 300px;
+    height: 300px;
+  }
+
+  .segment-content {
+    width: 82px;
+    bottom: 20px;
+  }
+
+  .segment-content span {
+    font-size: 15px;
+  }
+
+  .wheel-center {
+    width: 105px;
+    height: 105px;
+  }
+
+  .wheel-center span {
+    font-size: 21px;
+  }
+
+  .max-btn,
+  .spin-main-btn,
+  .auto-btn {
+    min-height: 8px;
+    font-size: 16px;
+  }
+
+  .spin-main-btn {
+    font-size: 20px;
+  }
+}
+
+
+
+
+
+.casino-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.2s;
+}
+
+.casino-close-btn:hover {
+  background: #ef4444;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

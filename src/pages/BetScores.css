@@ -1,0 +1,165 @@
+/* 🔥 RESET (SAFE) */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 🔥 ROOT FIX */
+#root {
+  min-height: 100vh;
+}
+
+
+
+
+.bet-page {
+  min-height: 100vh;
+  padding: 15px;
+  color: white;
+
+  /* 🔥 IMAGE BACKGROUND */
+  background: 
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+    url("/stadium.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* 🔥 HEADER */
+.bet-header {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+/* 🔥 TEAMS */
+.teams {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.team span {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.vs {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* 🔥 FALLBACK LOGO */
+.logo-fallback {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #0df32c, #1e3a8a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+/* 🔥 TABS */
+.tabs {
+  display: flex;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px;
+  text-align: center;
+   background:linear-gradient(180deg,#756923,#fc3e04,#c8ff03);
+  color: #000000;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+.tab:hover {
+  opacity: 0.85;
+}
+
+.tab.active {
+  background: #086615;
+  color: white;
+}
+
+/* 🔥 GRID */
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* 🔥 SCORE CARD */
+.score-card {
+  background:linear-gradient(180deg,#756923,#fc3e04,#c8ff03);
+  padding: 14px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  transition: 0.2s;
+}
+
+.score-card:hover {
+  transform: scale(1.05);
+}
+
+/* 🔥 ACTIVE CARD */
+.score-card.active {
+  background: linear-gradient(180deg, #22c55e, #15803d);
+  color: white;
+}
+
+/* 🔥 SCORE TEXT */
+.score {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* 🔥 ODDS (GREEN) */
+.odds {
+  font-size: 13px;
+  margin-top: 5px;
+  color: #000000;
+  font-weight: bold;
+}
+
+/* 🔥 SELECTED BOX */
+.bet-box {
+  margin-top: 15px;
+  padding: 12px;
+  background: linear-gradient(180deg, #c8ff01, #1e3a8a);
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* 🔥 LOADING */
+.loading {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+}

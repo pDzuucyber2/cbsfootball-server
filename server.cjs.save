@@ -1,0 +1,40 @@
+const express = require('express');
+const cors = require('cors');
+const { TronWeb } = require('tronweb');
+const bip39 = require('bip39');
+const hdkey = require('hdkey');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// 🔐 WEKA SEED YAKO HAPA (REAL)
+const mnemonic = "weka maneno yako 12 hapa";
+
+const seed = bip39.mnemonicToSeedSync(mnemonic);
+const root = hdkey.fromMasterSeed(seed);
+
+const tronWeb = new TronWeb({
+  fullHost: 'https://api.trongrid.io'
+});
+
+const BASE_PATH = "m/44'/195'/0'/0/";
+
+// 🔑 generate address
+function getAddress(index) {
+  const child = root.derive(BASE_PATH + index);
+  const privateKey = child.privateKey.toString('hex');
+  const address = tronWeb.address.fromPrivateKey(privateKey);
+  return address;
+}
+
+// 🚀 API
+app.post('/wallet', (req, res) => {
+  const { index } = req.body;
+
+  if (!index) {
+    return res.status(400).json({ error: "Index required" });
+  }
+
+  const address = getAddress(index);
+

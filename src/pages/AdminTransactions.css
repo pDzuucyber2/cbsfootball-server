@@ -1,0 +1,230 @@
+.admin-container {
+  padding: 30px;
+  background: #0f172a;
+  min-height: 100vh;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #00ffcc;
+}
+
+.loading {
+  color: #aaa;
+}
+
+.stats-box {
+  background: linear-gradient(135deg, #00ffcc, #0066ff);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.stats-box h3 {
+  margin: 0;
+}
+
+.stats-box span {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.search-box {
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+}
+
+.approved-users {
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.approved-users ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.approved-users li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #334155;
+}
+
+.approved-users span {
+  color: #00ffcc;
+  font-weight: bold;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1e293b;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background: #0f172a;
+  color: #00ffcc;
+}
+
+tr:nth-child(even) {
+  background: #172033;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.status.success {
+  background: #16a34a;
+}
+
+.status.pending {
+  background: #facc15;
+  color: black;
+}
+
+.status.rejected {
+  background: #dc2626;
+}
+
+select {
+  padding: 5px;
+  border-radius: 6px;
+  border: none;
+}
+
+
+
+
+
+
+
+
+.status{
+padding:6px 10px;
+border-radius:6px;
+font-weight:bold;
+color:white;
+text-transform:capitalize;
+}
+
+/* Pending */
+.status.pending{
+background:#e6ff01;
+}
+
+/* Processing */
+.status.processing{
+background:#ffc107;
+color:black;
+}
+
+/* Success */
+.status.success{
+background:#28a745;
+}
+
+/* Rejected */
+.status.rejected{
+background:#dc3545;
+}
+
+
+
+
+
+
+
+
+
+.deposits-boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.deposit-card {
+  border: 1px solid #221f1f;
+  border-radius: 8px;
+  padding: 12px;
+  background-color: #141414;
+  box-shadow: 0 2px 5px rgba(14, 13, 13, 0.1);
+}
+
+.pending-usdt {
+  border-color: orange;
+  background-color: #000000;
+}
+
+.tsh-deposit {
+  border-color: green;
+  background-color: #161616;
+}
+
+
+
+
+
+
+
+
+
+
+
+.visitor-processing-card{
+  background:#111;
+  border:1px solid #ffc107;
+  padding:12px;
+  margin-top:15px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.processing-item{
+  border-bottom:1px solid #333;
+  padding:5px 0;
+}
+
+.processing-text{
+  color:#ffc107;
+  font-weight:bold;
+}
+
+
+
+
+.status-expired{
+background:#ff670f;
+color:white;
+padding:4px 10px;
+border-radius:6px;
+margin-left:10px;
+}

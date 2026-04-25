@@ -1,0 +1,125 @@
+.transfer-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  padding: 20px 16px 100px;
+  box-sizing: border-box;
+}
+
+.transfer-page h2 {
+  margin: 0 0 18px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  text-align: center;
+}
+
+.transfer-box {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  box-sizing: border-box;
+}
+
+.transfer-box input,
+.transfer-box select {
+  width: 100%;
+  height: 52px;
+  border: 1px solid #dbe2ea;
+  border-radius: 14px;
+  padding: 0 14px;
+  margin-bottom: 14px;
+  font-size: 15px;
+  color: #0f172a;
+  background: #f8fafc;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.transfer-box input::placeholder {
+  color: #94a3b8;
+}
+
+.transfer-box input:focus,
+.transfer-box select:focus {
+  border-color: #16a34a;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
+}
+
+.transfer-box select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.transfer-box p {
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+.transfer-box button {
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 18px rgba(34, 197, 94, 0.28);
+}
+
+.transfer-box button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(34, 197, 94, 0.35);
+}
+
+.transfer-box button:active {
+  transform: translateY(0);
+}
+
+.transfer-box button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.transfer-box div {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 480px) {
+  .transfer-page {
+    padding: 16px 12px 90px;
+  }
+
+  .transfer-page h2 {
+    font-size: 21px;
+  }
+
+  .transfer-box {
+    border-radius: 18px;
+    padding: 16px 14px;
+  }
+
+  .transfer-box input,
+  .transfer-box select,
+  .transfer-box button {
+    height: 50px;
+    font-size: 14px;
+  }
+}

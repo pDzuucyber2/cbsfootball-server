@@ -1,0 +1,115 @@
+
+
+/* PAGE */
+.withdraw-page {
+  max-width: 420px;
+  background:linear-gradient(180deg,#081c34,#153c6d,#413a12,#1b4116,#081c34);
+ 
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* TITLE */
+.withdraw-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+/* SECTION BOX */
+.section {
+  background: #111;
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LABEL */
+.section p {
+  margin: 0;
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* VALUE */
+.section b {
+  font-size: 14px;
+  color: #fff;
+}
+
+/* INPUT */
+.section input {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: #222;
+  color: #fff;
+}
+
+/* BUTTONS */
+.submit {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #00c853;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.submit:hover {
+  background: #00b248;
+}
+
+.submit:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+/* CANCEL */
+.cancel {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #ff3d00;
+  color: #fff;
+  font-size: 14px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cancel:hover {
+  background: #e53900;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .withdraw-page {
+    padding: 15px;
+  }
+
+  .section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .section b {
+    align-self: flex-end;
+  }
+}

@@ -1,0 +1,71 @@
+.commission-container {
+  padding: 15px;
+  color: white;
+  background: #0f172a;
+  min-height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.commission-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.commission-card {
+  background: #1e293b;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+/* TOP */
+.top {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.amount {
+  color: #38bdf8;
+}
+
+/* STATUS */
+.status {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.status.processing {
+  background: orange;
+  color: black;
+}
+
+.status.success {
+  background: #22c55e;
+}
+
+/* LEVELS */
+.levels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+/* DATE */
+.date {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* EMPTY */
+.no-data {
+  text-align: center;
+  color: #94a3b8;
+}

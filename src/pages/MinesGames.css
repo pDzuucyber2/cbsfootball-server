@@ -1,0 +1,182 @@
+.mines-page {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #020617 0%, #000 80%);
+  color: #fff;
+  padding: 10px;
+  padding-bottom: 90px;
+}
+
+/* TOP BAR */
+.mines-topbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.mines-box {
+  background: #0f172a;
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 14px;
+  padding: 10px;
+  text-align: center;
+}
+
+.mines-box p {
+  font-size: 12px;
+  color: #5eead4;
+  margin-bottom: 4px;
+}
+
+.mines-box h3 {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+/* BET ROW */
+.mines-bet-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mines-bet-row button {
+  background: linear-gradient(180deg, #1e293b, #020617);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  font-size: 22px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.mines-bet-center {
+  background: #0f172a;
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 12px;
+  padding: 8px;
+  text-align: center;
+}
+
+.mines-bet-center p {
+  font-size: 11px;
+  margin-bottom: 4px;
+  color: #22d3ee;
+}
+
+.mines-bet-center input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 800;
+}
+
+/* ACTION BUTTONS */
+.mines-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.start-btn {
+  background: linear-gradient(180deg, #10b981, #059669);
+  color: #fff;
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: 900;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cash-btn {
+  background: linear-gradient(180deg, #f59e0b, #d97706);
+  color: #fff;
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: 900;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* GRID */
+.mines-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+/* TILE (CLEAN STYLE) */
+.mines-tile {
+  aspect-ratio: 1/1;
+  background: linear-gradient(145deg, #1e293b, #020617);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.2s ease;
+}
+
+/* HOVER EFFECT */
+.mines-tile:hover {
+  transform: scale(1.05);
+}
+
+/* SAFE TILE */
+.mines-tile.open {
+  background: linear-gradient(145deg, #0f766e, #14b8a6);
+  animation: pop 0.2s ease;
+}
+
+/* MINE TILE */
+.mines-tile.mine {
+  background: linear-gradient(145deg, #dc2626, #b91c1c);
+  animation: shake 0.3s ease;
+}
+
+/* MESSAGE */
+.mines-message {
+  text-align: center;
+  margin-top: 12px;
+  font-weight: 800;
+  font-size: 14px;
+  color: #facc15;
+}
+
+/* ANIMATIONS */
+@keyframes pop {
+  0% { transform: scale(0.7); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 480px) {
+  .mines-bet-row {
+    grid-template-columns: 50px 1fr 50px;
+  }
+
+  .mines-tile {
+    font-size: 18px;
+  }
+
+  .start-btn,
+  .cash-btn {
+    font-size: 14px;
+    padding: 12px;
+  }
+}

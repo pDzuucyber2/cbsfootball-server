@@ -1,0 +1,150 @@
+/* 🔥 PAGE */
+.admin-refund {
+  padding: 20px;
+  color: #fff;
+  background: linear-gradient(180deg, #0f172a, #1e3a8a);
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* 🔥 TITLE */
+.admin-refund h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 🔥 MESSAGE */
+.msg {
+  background: #22c55e;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* 🔥 REFUND ALL BUTTON */
+.refund-all {
+  background: #ef4444;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 15px;
+  transition: 0.2s;
+}
+
+/* 🔥 BUTTON HOVER */
+.refund-all:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+/* 🔥 TABLE WRAPPER (MOBILE SAFE) */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+/* 🔥 TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* 🔥 HEAD */
+thead {
+  background: #1e293b;
+}
+
+th {
+  padding: 12px;
+  text-align: left;
+  font-size: 13px;
+  border-bottom: 1px solid #334155;
+  white-space: nowrap;
+}
+
+/* 🔥 BODY */
+td {
+  padding: 10px;
+  font-size: 13px;
+  border-bottom: 1px solid #1e293b;
+  white-space: nowrap;
+}
+
+/* 🔥 ROW HOVER */
+tr:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* 🔥 STATUS COLORS */
+td:nth-child(5) {
+  font-weight: bold;
+}
+
+/* ✅ REFUNDED */
+.refunded {
+  color: #22c55e;
+}
+
+/* ❌ NOT REFUNDED */
+.not-refunded {
+  color: #ef4444;
+}
+
+/* 🔥 REFUND BUTTON */
+button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s;
+}
+
+/* 🔥 SINGLE REFUND */
+button {
+  background: #22c55e;
+  color: white;
+}
+
+/* 🔥 BUTTON HOVER */
+button:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* 🔥 EMPTY TEXT */
+.admin-refund p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* 📱 TABLE SCROLL FIX */
+@media (max-width: 768px) {
+
+  th, td {
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  .admin-refund {
+    padding: 10px;
+  }
+
+}
+
+/* 📱 SMALL DEVICES */
+@media (max-width: 500px) {
+
+  table {
+    min-width: 600px;
+  }
+
+}

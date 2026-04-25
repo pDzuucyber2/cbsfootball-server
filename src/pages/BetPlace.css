@@ -1,0 +1,432 @@
+.betplace {
+  padding: 15px;
+  color: #fff;
+  background: 
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+    url("/stadiums.jpg");
+
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* 🔥 MATCH BOX */
+.match-box {
+background:linear-gradient(180deg,#b33445,#029aff);
+  
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.match-box h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.match-box p {
+  font-size: 13px;
+  color: #3cff00;
+}
+
+/* 🔥 TEAMS */
+.teams {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.teams img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  background:linear-gradient(180deg,#b33445,#029aff);
+  
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.teams span {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* 🔥 DATE */
+.date {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #0f0f0f;
+}
+
+/* 🔥 SELECTION */
+.selection-box {
+    background:linear-gradient(180deg,#796b21,#081c34);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 12px;
+}
+
+.selection-box .label {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.selection {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.odds {
+  color: #22c55e;
+  margin-top: 5px;
+}
+
+/* 🔥 BALANCE */
+.balance-box {
+  text-align: center;
+  margin: 10px 0;
+  color: #22c55e;
+  font-weight: bold;
+}
+
+/* 🔥 AMOUNT */
+.amount-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.amount-box input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: #1e293b;
+  color: white;
+}
+
+.amount-box button {
+  padding: 12px;
+  background: #22c55e;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.amount-box button:hover {
+  background: #16a34a;
+}
+
+/* 🔥 QUICK BUTTONS */
+.quick {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.quick button {
+  flex: 1;
+  padding: 10px;
+  background: #1e293b;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.quick button:hover {
+  background: #334155;
+}
+
+/* 🔥 WIN BOX */
+.win-box {
+  text-align: center;
+  margin: 15px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #facc15;
+}
+
+/* 🔥 PLACE BUTTON */
+.place-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(45deg, #22c55e, #16a34a);
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.place-btn:hover {
+  opacity: 0.9;
+}
+
+/* 🔥 LOADING */
+.loading {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 18px;
+}
+
+/* 🔥 MOBILE RESPONSIVE */
+@media (max-width: 500px) {
+  .teams img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .match-box h2 {
+    font-size: 15px;
+  }
+
+  .selection {
+    font-size: 16px;
+  }
+}
+
+
+
+.logo-fallback {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+ background:linear-gradient(180deg,#ffd902,#081c34);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+  font-size: 14px;
+}
+
+
+
+
+
+
+.logo-fallback {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* label colors */
+.label.correct {
+  color: #22c55e;
+}
+
+.label.any {
+  color: #3b82f6;
+}
+
+
+
+
+
+
+
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  z-index: 999;
+}
+
+.single-spin {
+  width: 70px;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  color: white;
+  font-size: 16px;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+
+
+
+.quick {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;        /* 🔥 scroll kwenda kulia */
+  padding: 10px 0;
+  scrollbar-width: none;   /* Firefox */
+}
+
+.quick::-webkit-scrollbar {
+  display: none;           /* Chrome */
+}
+
+.quick button {
+  min-width: 90px;         /* 🔥 buttons zisipungue */
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #1e293b;
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;     /* 🔥 text isikatike */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.betplace-loader-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.betplace-loader-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.betplace-loader-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.betplace-loader-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+  font-weight: 800;
+  gap: 18px;
+}
+
+.betplace-solar-system {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.betplace-sun {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  box-shadow:
+    0 0 12px rgba(255, 217, 0, 0.8),
+    0 0 30px rgba(0, 255, 153, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.betplace-sun img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.betplace-orbit {
+  position: absolute;
+  border: 1px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.betplace-orbit-one {
+  width: 110px;
+  height: 110px;
+  animation: betplaceOrbitSpin 6s linear infinite;
+}
+
+.betplace-orbit-two {
+  width: 80px;
+  height: 80px;
+  animation: betplaceOrbitSpinReverse 4s linear infinite;
+}
+
+.betplace-planet-ball {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
+}
+
+.betplace-planet-ball.small {
+  font-size: 18px;
+  top: -10px;
+}
+
+@keyframes betplaceOrbitSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes betplaceOrbitSpinReverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}

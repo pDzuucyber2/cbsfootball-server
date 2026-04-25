@@ -1,0 +1,127 @@
+/* 🍪 Cookies Policy Styles - ContractBetscore */
+
+.cookies-page {
+  background: #0f172a;
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+.cookies-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #111827;
+  border-radius: 12px;
+}
+
+.cookies-header h2 {
+  margin: 0;
+  font-size: 26px;
+  color: #facc15;
+}
+
+.cookies-header p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+/* LANGUAGE SWITCH */
+.lang-switch {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.lang-switch button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #1f2937;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.lang-switch button:hover {
+  background: #facc15;
+  color: #000;
+}
+
+/* CONTAINER */
+.cookies-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* CARD */
+.cookie-card {
+  background: #111827;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #1f2937;
+}
+
+/* TITLE BUTTON */
+.cookie-title {
+  width: 100%;
+  background: #1f2937;
+  color: #fff;
+  padding: 14px;
+  border: none;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.cookie-title:hover {
+  background: #374151;
+}
+
+/* CONTENT */
+.cookie-content {
+  padding: 15px;
+  background: #0b1220;
+}
+
+.cookie-content ul {
+  padding-left: 20px;
+}
+
+.cookie-content li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+/* WARNING CARD */
+.warning-card {
+  border: 1px solid #ef4444;
+}
+
+.warning-card .cookie-title {
+  background: #7f1d1d;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .cookies-header h2 {
+    font-size: 20px;
+  }
+
+  .cookie-title {
+    font-size: 14px;
+  }
+
+  .cookie-content li {
+    font-size: 13px;
+  }
+}

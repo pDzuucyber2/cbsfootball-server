@@ -1,0 +1,367 @@
+.cardflip-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(99, 102, 241, 0.22), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.18), transparent 28%),
+    linear-gradient(180deg, #060816 0%, #0a1020 45%, #05070f 100%);
+  color: #fff;
+  padding: 14px;
+  padding-bottom: 90px;
+  overflow-x: hidden;
+}
+
+.cardflip-hero {
+  max-width: 980px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.cardflip-glow {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  filter: blur(70px);
+  z-index: 0;
+  opacity: 0.35;
+}
+
+.cardflip-glow-left {
+  background: #7c3aed;
+  left: -30px;
+  top: 60px;
+}
+
+.cardflip-glow-right {
+  background: #f59e0b;
+  right: -20px;
+  top: 120px;
+}
+
+.cardflip-topbar {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.cardflip-balance-card {
+  background: rgba(15, 23, 42, 0.78);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 14px 12px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+.cardflip-balance-card p {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.cardflip-balance-card h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  word-break: break-word;
+}
+
+.cardflip-banner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  background: rgba(17, 24, 39, 0.72);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+.cardflip-banner-left h2 {
+  margin: 0 0 6px;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.cardflip-banner-left span {
+  color: #cbd5e1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cardflip-banner-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mini-chip {
+  background: linear-gradient(180deg, #2563eb, #1d4ed8);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 13px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.mini-chip.danger {
+  background: linear-gradient(180deg, #ef4444, #dc2626);
+}
+
+.cardflip-main-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(14px);
+  border-radius: 28px;
+  padding: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.cardflip-bet-panel {
+  max-width: 420px;
+  margin: 0 auto 22px;
+  text-align: center;
+}
+
+.cardflip-bet-panel p {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #cbd5e1;
+}
+
+.cardflip-bet-panel input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #f8fafc;
+  color: #0f172a;
+  border-radius: 16px;
+  height: 56px;
+  padding: 0 14px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.cardflip-bet-panel small {
+  display: block;
+  margin-bottom: 14px;
+  color: #facc15;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.cardflip-start-btn {
+  width: 100%;
+  border: none;
+  border-radius: 16px;
+  height: 54px;
+  background: linear-gradient(180deg, #facc15, #eab308);
+  color: #111827;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(250, 204, 21, 0.28);
+}
+
+.cardflip-tip {
+  font-size: 15px;
+  font-weight: 800;
+  color: #22c55e;
+}
+
+.cardflip-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.flip-card {
+  aspect-ratio: 0.78 / 1;
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1e293b, #0f172a);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.24);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.flip-card.clickable {
+  cursor: pointer;
+}
+
+.flip-card.clickable:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 34px rgba(0, 0, 0, 0.32);
+}
+
+.flip-card-front,
+.flip-card-back {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.flip-card-front {
+  background:
+    linear-gradient(180deg, rgba(124, 58, 237, 0.92), rgba(59, 130, 246, 0.82)),
+    linear-gradient(135deg, #7c3aed, #2563eb);
+  color: #fff;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.flip-card-back {
+  font-size: 44px;
+}
+
+.flip-card.revealed.win-card {
+  background: linear-gradient(180deg, #10b981, #059669);
+}
+
+.flip-card.revealed.lose-card {
+  background: linear-gradient(180deg, #ef4444, #dc2626);
+}
+
+.cardflip-message {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 18px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #f8fafc;
+}
+
+@media (max-width: 768px) {
+  .cardflip-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cardflip-banner-right {
+    width: 100%;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .mini-chip {
+    flex: 1;
+  }
+
+  .cardflip-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .flip-card-front {
+    font-size: 18px;
+  }
+
+  .flip-card-back {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardflip-page {
+    padding: 10px;
+    padding-bottom: 85px;
+  }
+
+  .cardflip-topbar {
+    gap: 10px;
+  }
+
+  .cardflip-balance-card {
+    border-radius: 16px;
+    padding: 12px 10px;
+  }
+
+  .cardflip-balance-card h3 {
+    font-size: 18px;
+  }
+
+  .cardflip-banner {
+    border-radius: 20px;
+    padding: 14px;
+    margin-bottom: 14px;
+  }
+
+  .cardflip-banner-left h2 {
+    font-size: 22px;
+  }
+
+  .cardflip-banner-left span {
+    font-size: 12px;
+  }
+
+  .mini-chip {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+
+  .cardflip-main-card {
+    border-radius: 22px;
+    padding: 14px;
+  }
+
+  .cardflip-bet-panel {
+    margin-bottom: 16px;
+  }
+
+  .cardflip-bet-panel input {
+    height: 50px;
+    font-size: 20px;
+    border-radius: 14px;
+  }
+
+  .cardflip-start-btn {
+    height: 50px;
+    font-size: 16px;
+    border-radius: 14px;
+  }
+
+  .cardflip-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .flip-card {
+    border-radius: 16px;
+  }
+
+  .flip-card-front {
+    font-size: 15px;
+  }
+
+  .flip-card-back {
+    font-size: 28px;
+  }
+
+  .cardflip-message {
+    font-size: 15px;
+  }
+}

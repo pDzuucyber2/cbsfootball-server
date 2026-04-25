@@ -1,0 +1,32 @@
+.admin-container {
+  padding: 10px;
+}
+
+.match-card {
+  background: #111;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.row {
+  margin-bottom: 5px;
+}
+
+.actions button {
+  margin-right: 5px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+}
+
+.modal-box {
+  background: #fff;
+  padding: 20px;
+  margin: 100px auto;
+  width: 300px;
+}

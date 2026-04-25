@@ -1,0 +1,110 @@
+.business-container {
+  height: 70vh;
+  overflow: hidden;
+  padding: 10px;
+  font-family: Arial;
+   background: linear-gradient(180deg,#081c34,#261b4d,#c2ad4e,#1f4b14);
+ 
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* BACK */
+.back-btn {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+/* TITLE */
+.business-container h2 {
+  font-size: 18px;
+  margin: 5px 0;
+  text-align: center;
+}
+
+/* NETWORK */
+.network-select {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.network-select button {
+  flex: 1;
+  padding: 6px;
+  font-size: 12px;
+  border-radius: 8px;
+  border: 1px solid #999;
+  background: transparent;
+  color: #fff;
+}
+
+.network-select .active {
+  background: #00ff88;
+  color: #000;
+}
+
+/* TITLE TEXT */
+.title {
+  font-size: 13px;
+  margin: 5px 0;
+  text-align: center;
+}
+
+/* NUMBER BOX */
+.number-box {
+  border: 2px solid #00ff88;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+/* INPUT */
+.amount-input {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+/* INSTRUCTION BOX (🔥 FIXED SIZE) */
+.instruction-box {
+  background: #1b3d56;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 10px;
+
+  max-height: 140px;   /* 🔥 inazuia ukubwa */
+  overflow-y: auto;    /* 🔥 scroll ndani tu */
+}
+
+/* TITLE YA INSTRUCTION */
+.instruction-box h3 {
+  font-size: 13px;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+/* TEXT YA NDANI */
+.instruction-box pre {
+  font-size: 9px;
+  line-height: 1.1;
+  white-space: pre-wrap;
+}
+
+/* BUTTON */
+.continue-btn {
+  padding: 10px;
+  font-size: 13px;
+  
+  background: #00ff88;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 6px;
+}

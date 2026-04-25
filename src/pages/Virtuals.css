@@ -1,0 +1,363 @@
+.match-list{
+
+  padding:15px;
+
+  background: linear-gradient(180deg,#46491e,#39441c);
+
+}
+
+.title-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:white;
+  margin-bottom:10px;
+}
+
+.title-row span{
+  color:#377c71;
+  font-size:14px;
+}
+
+.match-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:linear-gradient(180deg,#ffd902,#081c34);
+  padding:14px;
+  border-radius:12px;
+  margin-bottom:12px;
+}
+
+.team-logo{
+  width:40px;
+  height:40px;
+  object-fit:contain;
+}
+
+.match-info{
+  text-align:center;
+  flex:1;
+}
+
+.teams{
+  color:white;
+  font-weight:600;
+  font-size:15px;
+}
+
+.teams span{
+  color:#00d4ff;
+}
+
+.league{
+  font-size:12px;
+  color:#8fb3d9;
+  margin-top:4px;
+}
+
+.time{
+  font-size:12px;
+  color:#8fb3d9;
+  margin-top:2px;
+}
+
+
+
+
+
+.sports-select{
+
+display:flex;
+
+gap:10px;
+
+margin-bottom:15px;
+
+}
+
+.select-box{
+
+flex:1;
+
+background:#1c2f45;
+
+border-radius:10px;
+
+padding:10px;
+
+text-align:center;
+
+color:white;
+
+cursor:pointer;
+
+transition:0.2s;
+
+}
+
+.select-box.active{
+
+background:#3cff00;
+
+color:#081c34;
+
+font-weight:bold;
+
+}
+
+.count{
+
+font-size:18px;
+
+font-weight:700;
+
+}
+
+.label{
+
+font-size:12px;
+
+margin-top:2px;
+
+}
+
+
+
+.more-btn{
+
+text-align:center;
+
+background:#ac0808;
+
+color:#081c34;
+
+padding:10px;
+
+border-radius:8px;
+
+font-weight:600;
+
+cursor:pointer;
+
+margin-top:10px;
+
+}
+
+
+
+
+.sports-select{
+
+display:flex;
+
+gap:10px;
+
+margin-bottom:15px;
+
+}
+
+.select-box{
+
+flex:1;
+
+background:#1c2f45;
+
+border-radius:10px;
+
+padding:10px;
+
+text-align:center;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+.select-box.active{
+
+background:#3cff00;
+
+color:#081c34;
+
+font-weight:bold;
+
+}
+
+.count{
+
+font-size:18px;
+
+font-weight:700;
+
+}
+
+.label{
+
+font-size:12px;
+
+}
+
+
+.team-logo{
+
+width:40px;
+
+height:40px;
+
+object-fit:contain;
+
+}
+
+
+
+
+.timezone-select{
+
+padding:6px 10px;
+border-radius:6px;
+border:1px solid #ccc;
+ 
+background:white;
+font-size:14px;
+
+}
+
+
+
+.team-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.logo-fallback {
+  width: 52px;
+  height: 52px;
+background:linear-gradient(180deg,#ffd902,#081c34);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 50%;
+  font-size: 14px;
+}
+
+
+
+
+.logo-fallback {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+
+
+
+.search-input{
+  width:40%;
+  padding:8px 10px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+  outline:none;
+  font-size:10px;
+}
+
+
+
+
+.match-side {
+  width: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  gap: 6px;
+}
+
+.side-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ff0000;
+}
+
+.side-value {
+  font-size: 14px;
+  font-weight: 800;
+  color: #00ffcc;
+  text-align: center;
+}
+
+.go-text {
+  margin-top: 2px;
+  color: #00ffcc;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+.promo-info-box {
+  margin: 20px;
+  padding: 18px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #12263f, #1b3556);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.promo-title {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #ff3c0b;
+  text-align: center;
+}
+
+.promo-text {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #e9eef5;
+}
+
+.match-side {
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  gap: 6px;
+}
+
+.side-label {
+  font-size: 12px;
+  font-weight: 900;
+  color: #ff0101;
+}
+
+.side-value {
+  font-size: 16px;
+  font-weight: 900;
+  color: #00ffcc;
+  text-align: center;
+}

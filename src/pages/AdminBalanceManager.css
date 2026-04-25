@@ -1,0 +1,95 @@
+/* ===== DARK BLUE SAFE CSS (SCOPED) ===== */
+
+.admin-dark {
+  background: linear-gradient(180deg, #040b16 0%, #07111f 50%, #0a1830 100%);
+  min-height: 100vh;
+  padding: 20px;
+  color: #fff;
+}
+
+/* Header */
+.admin-dark h2 {
+  color: #fff;
+}
+
+/* Form */
+.admin-dark form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.admin-dark select,
+.admin-dark input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #1e3a5f;
+  background: #0f223d;
+  color: #fff;
+}
+
+.admin-dark input::placeholder {
+  color: #94a3b8;
+}
+
+.admin-dark select:focus,
+.admin-dark input:focus {
+  border-color: #3b82f6;
+}
+
+/* Card */
+.admin-dark .user-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+/* Text */
+.admin-dark p {
+  color: #cbd5e1;
+}
+
+.admin-dark strong {
+  color: #fff;
+}
+
+/* Buttons */
+.admin-dark button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Specific buttons */
+.admin-dark button[type="submit"] {
+  background: #2563eb;
+  color: #fff;
+}
+
+.admin-dark button[type="submit"]:hover {
+  background: #1d4ed8;
+}
+
+.admin-dark button:nth-of-type(1) {
+  background: #f59e0b;
+  color: #fff;
+}
+
+.admin-dark button:nth-of-type(2) {
+  background: #ef4444;
+  color: #fff;
+}
+
+/* Message */
+.admin-dark .message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(59,130,246,0.15);
+  color: #bfdbfe;
+}

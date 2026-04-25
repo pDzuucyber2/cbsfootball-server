@@ -1,0 +1,84 @@
+.league-tabs{
+
+display:flex;
+gap:10px;
+overflow-x:auto;
+padding:10px;
+
+}
+
+.league-tabs::-webkit-scrollbar{
+display:none;
+}
+
+.league-card{
+
+display:flex;
+align-items:center;
+gap:4px;
+padding:2px 2px;
+background:#ffd900;
+border-radius:12px;
+cursor:pointer;
+white-space:nowrap;
+font-size:14px;
+transition:0.2s;
+
+}
+
+.league-card:hover{
+
+background:#ffffff;
+
+}
+
+.league-logo{
+
+width:20px;
+height:20px;
+object-fit:contain;
+
+}
+
+.league-loading{
+
+padding:10px;
+font-size:14px;
+
+}
+
+
+
+
+.league-logo {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+/* 🔥 FALLBACK */
+.league-fallback {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+    background: linear-gradient(180deg,#46491e,#cfcc04);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #33ff00;
+  font-weight: bold;
+}
+
+/* ⚽ ICON */
+.league-fallback .ball {
+  font-size: 14px;
+  line-height: 12px;
+}
+
+/* INITIALS */
+.league-fallback .initials {
+  font-size: 10px;
+  margin-top: -2px;
+}

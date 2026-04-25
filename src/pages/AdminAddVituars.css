@@ -1,0 +1,63 @@
+/* CONTAINER */
+.admin-container{
+  padding: 15px;
+  background: #020617;
+  color: white;
+  min-height: 100vh;
+}
+
+/* TEXTAREA */
+.admin-container .json-box{
+  width: 100%;
+  height: 150px;
+  background: #1e293b;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+/* BUTTON (SASA HAIATHIRI APP NZIMA) */
+.admin-container button{
+  margin-top: 10px;
+  padding: 12px;
+  background: gold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* VIEW CARD */
+.admin-container .view-card{
+  background: #1e293b;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+/* TOP */
+.admin-container .top{
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: gray;
+}
+
+/* TEAMS */
+.admin-container .teams{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+/* BOTTOM */
+.admin-container .bottom{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+/* STATUS COLORS */
+.admin-container .FT{ color: #22c55e; }
+.admin-container .LIVE{ color: red; }
+.admin-container .UPCOMING{ color: gold; }

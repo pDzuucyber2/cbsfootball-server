@@ -1,0 +1,48 @@
+.user-container {
+  padding: 15px;
+}
+
+.card {
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sub {
+  font-size: 12px;
+  color: #777;
+}
+
+.tzs {
+  font-size: 12px;
+  color: green;
+}
+
+.badge {
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.date {
+  font-size: 11px;
+  color: #999;
+  margin-top: 5px;
+}
+
+.empty {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  margin-top: 20px;
+}

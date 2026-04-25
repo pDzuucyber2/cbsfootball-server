@@ -1,0 +1,120 @@
+
+.topbar-wrapper{
+position:sticky;
+top:0;
+z-index:1000;
+
+ background: linear-gradient(180deg,#081c34,#c2ad4e);
+
+
+}
+/* GREEN LINE */
+
+.topbar-green{
+height:4px;
+background:#00ff87;
+width:100%;
+}
+
+/* HEADER */
+
+.topbar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:10px 14px;
+color:white;
+}
+
+
+
+.logo{
+  display:flex;
+  flex-direction:column;
+  line-height:1;
+}
+
+
+/* short name ndogo zaidi */
+.logo .short{
+  font-size:9px;
+  color:#300df7;
+  font-weight:bold;
+}
+
+.logo .main{
+  font-size:11px;
+  font-weight:600;
+}
+
+/* 🔥 COLOR 1 */
+.logo .c1{
+  color:#00bfff;   /* blue */
+}
+
+/* 🔥 COLOR 2 */
+.logo .c2{
+  color:#8cff00;   /* green */
+}
+
+/* 🔥 COLOR 3 */
+.logo .c3{
+  color:#ffcc00;   /* gold */
+}
+
+
+/* RIGHT SIDE */
+
+.right{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.search{
+font-size:18px;
+}
+
+.balance{
+background:#333;
+padding:6px 10px;
+border-radius:20px;
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.plus{
+background:#8cff00,#08ccc2;
+border:none;
+border-radius:50%;
+width:22px;
+height:22px;
+font-weight:bold;
+}
+
+
+
+
+/* MENU BOX */
+.menu-box{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/* LOGO NDOGO */
+.menu-logo{
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px gold);
+}
+
+/* ☰ ICON */
+.menu-icon{
+  font-size: 20px;
+  color: white;
+}
+

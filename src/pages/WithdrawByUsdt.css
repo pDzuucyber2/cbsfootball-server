@@ -1,0 +1,195 @@
+.withdraw-page {
+  padding: 15px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.header h2 {
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.tabs span {
+  padding: 10px;
+}
+
+.tabs .active {
+  background: #0f2a44;
+  color: white;
+  border-radius: 10px;
+}
+
+/* BUTTONS */
+.top-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.top-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+}
+
+.active-btn {
+  background: #2f5d6c;
+  color: white;
+}
+
+/* SECTION */
+.section {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+/* ROW */
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+/* INPUT */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* NOTE */
+.note {
+  font-size: 12px;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* SUBMIT */
+.submit {
+  width: 100%;
+  padding: 15px;
+  background: #6fa6b3;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* 🔥 MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* BOX */
+.modal-box.center {
+  width: 90%;
+  max-width: 350px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* BUTTONS */
+.confirm {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(180deg, #34d058, #28a745);
+  color: white;
+  border: none;
+  margin-top: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cancel {
+  width: 100%;
+  padding: 14px;
+  background: #eee;
+  border: none;
+  margin-top: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+
+.quick button:disabled {
+  background: #ddd;
+  color: #999;
+  cursor: not-allowed;
+}
+
+
+
+.quick {
+  display: flex;
+  overflow-x: auto;   /* 🔥 scroll upande */
+  gap: 10px;
+  margin-top: 10px;
+  padding-bottom: 5px;
+}
+
+/* ondoka scrollbar (optional) */
+.quick::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #00c853; /* green */
+  width: 0%;
+  transition: width 0.5s ease;
+}

@@ -1,0 +1,136 @@
+.admin-finalscore-page {
+  min-height: 100vh;
+  background: #0f172a;
+  color: white;
+  padding: 16px;
+  padding-bottom: 80px;
+}
+
+.admin-finalscore-page h2 {
+  margin: 0 0 16px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.search-input {
+  width: 100%;
+  height: 44px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  padding: 0 12px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.loading-box,
+.empty-box {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+.match-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.match-card {
+  background: #1e293b;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.match-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.match-top h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.match-top h3 span {
+  color: #38bdf8;
+}
+
+.status-badge {
+  background: #334155;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.match-info p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #e2e8f0;
+}
+
+.action-row {
+  margin-top: 12px;
+}
+
+.action-row button {
+  width: 100%;
+  height: 42px;
+  border: none;
+  border-radius: 10px;
+  background: #38bdf8;
+  color: #00111f;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.edit-box {
+  margin-top: 12px;
+  background: #334155;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.edit-box input {
+  width: 100%;
+  height: 42px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 0 12px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-actions button {
+  flex: 1;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.save-btn {
+  background: #22c55e;
+  color: white;
+}
+
+.cancel-btn {
+  background: #ef4444;
+  color: white;
+}

@@ -1,0 +1,320 @@
+.mybets {
+padding: 15px;
+background: linear-gradient(180deg, #233f47,#facc15, #1e3a8a);
+color: white;
+}
+
+.bet-card {
+background: #1e293b;
+padding: 12px;
+border-radius: 10px;
+margin-bottom: 10px;
+}
+
+.bet-card .teams {
+font-weight: bold;
+margin-bottom: 5px;
+}
+
+.bet-card .league {
+font-size: 12px;
+color: #aaa;
+margin-bottom: 8px;
+}
+
+.details {
+display: flex;
+justify-content: space-between;
+margin-bottom: 8px;
+}
+
+.amount, .win {
+font-size: 13px;
+}
+
+.status {
+margin-top: 8px;
+font-weight: bold;
+}
+
+/* 🔥 STATUS COLORS */
+.bet-card.pending {
+border-left: 4px solid orange;
+}
+
+.bet-card.won {
+border-left: 4px solid limegreen;
+}
+
+.bet-card.lost {
+border-left: 4px solid red;
+}
+
+.no-bets {
+text-align: center;
+margin-top: 30px;
+color: rgb(241, 5, 5);
+}
+
+
+
+
+
+
+
+.teams-row {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 10px;
+}
+
+.team-logo {
+width: 40px;
+height: 40px;
+object-fit: contain;
+}
+
+.logo-fallback {
+width: 40px;
+height: 40px;
+background: #334155;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+font-size: 12px;
+}
+
+.vs {
+flex: 1;
+text-align: center;
+font-weight: bold;
+}
+
+
+.tabs {
+display: flex;
+gap: 10px;
+margin-bottom: 15px;
+}
+
+.tab {
+flex: 1;
+text-align: center;
+padding: 10px;
+background: #1e293b;
+border-radius: 8px;
+cursor: pointer;
+}
+
+.tab.active {
+background: #2b2eff;
+}
+
+
+
+
+.match-time {
+  text-align: center;
+  font-size: 11px;
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+.bet-time {
+  text-align: center;
+  font-size: 10px;
+  opacity: 0.7;
+  margin-top: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.bet-card {
+  background: linear-gradient(180deg, #facc15, #1e3a8a);
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 12px;
+  color: white;
+  position: relative;
+}
+
+/* 🔥 TOP TAGS */
+.top-tags {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.tag {
+background: linear-gradient(180deg, #facc15, #1e3a8a,#0d6338);
+  
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+
+/* 🔥 TEAMS */
+.teams-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.team-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.vs {
+  text-align: center;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.vs span {
+  color: #22c55e;
+}
+
+/* 🔥 LEAGUE */
+.league-box {
+  margin: 2px auto;
+  background: linear-gradient(180deg, #facc15, #1e3a8a,#0d6338);
+  padding: 2px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 12px;
+  width: 85%;
+}
+
+/* 🔥 BOTTOM */
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #f5f4f4;
+  margin-top: 5px;
+}
+
+.win {
+  font-weight: bold;
+  color: #4ade80;
+}
+
+/* 🔥 STATUS */
+.status {
+  text-align: center;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+/* 🔥 TIME */
+.time {
+  text-align: center;
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+
+
+.countdown {
+  text-align: center;
+  margin: 6px auto;
+  padding: 4px 12px;
+  background: rgba(0, 255, 150, 0.2);
+  color: #00ffcc;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 13px;
+  width: fit-content;
+  box-shadow: 0 0 8px rgba(0,255,150,0.4);
+}
+
+
+
+
+.cancel-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  border: none;
+  background: rgb(15, 90, 25);
+  color: rgb(253, 255, 254);
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+
+
+
+.bet-card.cancelled {
+  border-left: 4px solid red;
+  opacity: 0.8;
+}
+
+.status.cancelled {
+  color: red;
+  font-weight: bold;
+}
+
+
+
+
+.loading-screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f172a;
+}
+
+.loading-logo {
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+
+
+
+
+
+.summary-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.summary-item {
+background: linear-gradient(180deg, #f10467,#facc15, #fc5102);
+ 
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+}
+
+.summary-item p {
+  font-size: 12px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.summary-item h3 {
+  margin: 5px 0 0;
+  font-size: 18px;
+}

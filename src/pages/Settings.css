@@ -1,0 +1,560 @@
+/* CONTAINER */
+.settings-container {
+  width: 100%;
+  min-height: 100vh;
+   background:linear-gradient(180deg,#ffd902,#2e7d32,#081c34);
+ 
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* HEADER */
+.settings-header {
+  display: flex;
+  align-items: center;
+ background:linear-gradient(180deg,#ffd902,#2e7d32,#081c34);
+  color: #fff;
+  padding: 5px;
+  font-size: 8px;
+  font-weight: 500;
+}
+
+.settings-header span {
+  font-size: 22px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+/* LIST */
+.settings-list {
+  margin-top: 10px;
+}
+
+/* ITEM */
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ background:linear-gradient(180deg,#ffd902,#2e7d32,#081c34);
+  padding: 14px 16px;
+  font-size: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+/* CLICKABLE */
+.item.clickable {
+  cursor: pointer;
+}
+
+.item.clickable:hover {
+  
+  background: #ffffff;
+}
+
+/* RIGHT SIDE TEXT */
+.item span:last-child {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+/* ACTION TEXT */
+.action {
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+/* DIVIDER */
+.divider {
+  height: 10px;
+    background:linear-gradient(180deg,#ffd902,#2e7d32,#081c34);
+
+}
+
+/* ================= MODAL ================= */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* MODAL BOX */
+.modal-box {
+  width: 100%;
+  max-width: 500px;
+  background: #fff;
+  border-radius: 12px 12px 0 0;
+  padding: 20px;
+  animation: slideUp 0.3s ease;
+}
+
+/* ANIMATION */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* INPUT */
+.modal-box input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  outline: none;
+}
+
+.modal-box input:focus {
+  border-color: #3b82f6;
+}
+
+/* BUTTONS */
+.modal-box button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* CONFIRM BUTTON */
+.modal-box button:first-of-type {
+  background: linear-gradient(to right, #22c55e, #16a34a);
+  color: #fff;
+}
+
+/* CANCEL BUTTON */
+.modal-box button:last-of-type {
+  background: #eee;
+  color: #000000;
+}
+
+/* ERROR TEXT */
+.modal-box p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/* ================= EXTRA NICE TOUCH ================= */
+
+/* MASK PASSWORD */
+.mask {
+  letter-spacing: 3px;
+}
+
+/* SMOOTH */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
+
+/* OVERLAY (background blur/dim) */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(12, 12, 12);
+
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 🔥 CENTER VERTICAL */
+
+  z-index: 999;
+}
+
+/* BOX YA KAWAIDA */
+.modal-box {
+  width: 90%;
+  max-width: 380px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+
+  animation: popup 0.25s ease;
+}
+
+/* REAL NAME SPECIAL */
+.realname-box {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* HEADER (green) */
+.realname-header {
+  background: #28a745;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 16px;
+}
+
+/* BODY */
+.realname-body {
+  padding: 20px;
+}
+
+/* TEXT */
+.realname-body p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* INPUT */
+.modal input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  font-size: 14px;
+  outline: none;
+}
+
+/* ACTION BUTTONS */
+.realname-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.realname-actions button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* CANCEL */
+.realname-actions button:first-child {
+  background: #eee;
+  color: #333;
+}
+
+/* CONFIRM */
+.realname-actions .confirm {
+  background: linear-gradient(180deg, #4caf50, #2e7d32);
+  color: white;
+}
+
+/* NORMAL BUTTON */
+.modal-box button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #4caf50, #2e7d32);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* CANCEL BUTTON */
+.modal-box button:last-child {
+  background: #eee;
+  color: #333;
+}
+
+/* ANIMATION */
+@keyframes popup {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* REAL NAME MODAL */
+.realname-box {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.realname-header {
+  background: #23b33a;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.realname-body {
+  padding: 15px;
+  text-align: center;
+}
+
+.realname-body p {
+  font-size: 13px;
+  color: #636363;
+  margin-bottom: 15px;
+}
+
+.realname-body input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #f2f2f2;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+.realname-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.realname-actions .cancel {
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: #333;
+}
+
+.realname-actions .confirm {
+  flex: 1;
+  margin-left: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #23b33a, #7bdc8b);
+  color: white;
+  font-weight: bold;
+}
+
+
+
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+.modal-box {
+  background: #fff;
+  width: 90%;
+  max-width: 350px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* REAL NAME */
+.realname-header {
+  background: #28a745;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.realname-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.confirm {
+  background: green;
+  color: white;
+}
+
+/* SELECT */
+.select-box {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/* QUESTION MODAL */
+.question-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 1000;
+}
+
+.question-header {
+  background: #3c6e71;
+  color: white;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.question-header span {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.question-item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+
+
+
+
+
+
+/* CENTER MODAL */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* AUTO BET */
+.auto-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auto-box {
+  background: white;
+  width: 90%;
+  max-width: 350px;
+  border-radius: 12px;
+}
+
+.auto-item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+.date-picker {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.date-picker input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #1f1e1e;
+  font-size: 14px;
+  outline: none;
+}
+
+/* center popup vizuri */
+.react-datepicker {
+  border-radius: 15px !important;
+  overflow: hidden;
+  border: none !important;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* header */
+.react-datepicker__header {
+  background: #3b7c8f !important;
+  color: rgb(63, 62, 62);
+}
+
+/* selected day */
+.react-datepicker__day--selected {
+  background: #3b7c8f !important;
+}
+
+
+
+
+
+.custom-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.custom-header select {
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.custom-header button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}

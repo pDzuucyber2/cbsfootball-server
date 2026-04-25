@@ -1,0 +1,153 @@
+/* 🔥 MAIN CONTAINER */
+.invite-container {
+  height: calc(100vh - 120px); /* adjust kama header/footer ni kubwa */
+  overflow: hidden;
+ background: linear-gradient(180deg,#081c34,#1d4239,rgba(11, 143, 66, 0.993));
+ 
+  color: white;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 🔥 TOP BAR */
+.top-bar button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 🔥 TITLE */
+.title {
+  text-align: center;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+/* 🔥 QR */
+.qr-box {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.qr-box canvas {
+  width: 140px !important;
+  height: 140px !important;
+}
+
+/* 🔥 CARD */
+.card {
+  background: #1e293b;
+  padding: 10px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.card p {
+  font-size: 12px;
+  color: #cbd5f5;
+}
+
+.card h3 {
+  font-size: 14px;
+  margin: 5px 0;
+  word-break: break-all;
+}
+
+.link-text {
+  font-size: 11px;
+  word-break: break-all;
+}
+
+/* 🔥 BUTTON */
+.card button {
+  margin-top: 6px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* 🔥 SHARE ICONS GRID */
+.share-icons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  text-align: center;
+}
+
+/* 🔥 SHARE ITEM */
+.share-item {
+  cursor: pointer;
+}
+
+/* 🔥 ICON BOX */
+.icon {
+  width: 45px;
+  height: 45px;
+  background: #f1f5f9;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: auto;
+  font-size: 18px;
+  color: black;
+}
+
+/* 🔥 ICON COLORS */
+.icon.whatsapp {
+  background: #25d366;
+  color: white;
+}
+
+.icon.telegram {
+  background: #0088cc;
+  color: white;
+}
+
+.icon.facebook {
+  background: #1877f2;
+  color: white;
+}
+
+.icon.instagram {
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+  color: white;
+}
+
+/* 🔥 TEXT */
+.share-item p {
+  margin-top: 5px;
+  font-size: 11px;
+  color: #cbd5f5;
+}
+
+/* 🔥 RESPONSIVE EXTRA */
+@media (max-height: 650px) {
+  .qr-box canvas {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+}

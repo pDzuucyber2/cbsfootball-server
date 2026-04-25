@@ -1,0 +1,169 @@
+.dashboard{
+
+background: linear-gradient(180deg,#ffd902,#081c34);
+
+
+
+
+
+min-height:100vh;
+
+font-family:Arial, Helvetica, sans-serif;
+
+}
+/* TOP BAR */
+
+.topbar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:#1c1c1c;
+
+padding:10px 14px;
+}
+
+.logo{
+font-weight:bold;
+font-size:20px;
+}
+
+.logo span{
+color:#8cff00;
+}
+
+.balance{
+background:#333;
+padding:6px 12px;
+border-radius:20px;
+}
+
+.plus{
+background:#8cff00;
+border:none;
+border-radius:50%;
+width:24px;
+height:24px;
+margin-left:6px;
+}
+
+/* TABS */
+
+.tabs{
+display:flex;
+background:#222;
+color:white;
+}
+
+.tab{
+flex:1;
+text-align:center;
+padding:12px;
+font-size:14px;
+}
+
+.active{
+color:#8cff00;
+}
+
+/* BANNER */
+
+.banner{
+background:linear-gradient(90deg,#ff0040,#c2002b);
+color:white;
+padding:20px;
+}
+
+.banner h2{
+margin:0;
+font-size:26px;
+}
+
+.banner button{
+margin-top:10px;
+background:#6c5cff;
+border:none;
+padding:6px 12px;
+color:white;
+}
+
+/* LEAGUE */
+
+.league-tabs{
+display:flex;
+gap:8px;
+padding:10px;
+overflow-x:auto;
+}
+
+.league{
+background:white;
+padding:8px 12px;
+border-radius:10px;
+font-size:14px;
+}
+
+.league span{
+background:#e5e5e5;
+padding:2px 6px;
+border-radius:6px;
+margin-left:6px;
+}
+
+/* SECTION */
+
+.section{
+padding:10px 14px;
+font-weight:bold;
+display:flex;
+justify-content:space-between;
+}
+
+/* MATCH */
+
+.match{
+background:white;
+margin:10px;
+border-radius:10px;
+padding:12px;
+}
+
+.match-time{
+font-size:12px;
+color:#777;
+}
+
+.teams{
+margin-top:6px;
+}
+
+.teams strong{
+display:block;
+font-size:16px;
+}
+
+.league-name{
+font-size:12px;
+color:#777;
+margin-top:4px;
+}
+
+/* ODDS */
+
+.odds{
+display:flex;
+gap:6px;
+margin-top:10px;
+}
+
+.odd{
+flex:1;
+background:#eee;
+padding:8px;
+text-align:center;
+border-radius:6px;
+}
+
+.odd span{
+display:block;
+font-weight:bold;
+}

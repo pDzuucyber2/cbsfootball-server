@@ -1,0 +1,87 @@
+.container {
+  padding: 15px;
+  background: #0f172a;
+  color: white;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  border: none;
+  background: #1e293b;
+  color: white;
+}
+
+.button {
+  padding: 10px;
+  background: #22c55e;
+  border: none;
+  border-radius: 8px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.uploadBtn {
+  padding: 10px;
+  background: #f97316;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.countryBlock {
+  margin-bottom: 10px;
+}
+
+.countryHeader {
+  background: #1e293b;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.leagueBlock {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.leagueHeader {
+  background: #334155;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.matchRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #020617;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 8px;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.team img {
+  width: 20px;
+}
+
+.vs {
+  font-weight: bold;
+  color: #22c55e;
+}

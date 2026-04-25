@@ -1,0 +1,556 @@
+.register-page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+background-image: url("/images/register-bg.png");
+}
+
+.register-bg {
+  position: fixed;
+  inset: 0;
+ background-image: url("/images/register-bg.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain; /* badili kuwa cover kama unataka ijaze screen lote */
+  z-index: 0;
+  opacity: 0.45;
+}
+
+.register-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+.register-container {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 24px 18px 40px;
+  color: #fff;
+}
+
+.register-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.return-btn,
+.close-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 2px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.return-btn {
+  font-size: 18px;
+}
+
+.language-top {
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: center;
+}
+
+.language-top select {
+  width: 130px;
+  height: 20px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111;
+  font-size: 10px;
+  padding: 0 14px;
+  outline: none;
+}
+
+.register-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 500;
+  margin: 8px 0 8px;
+  color: #fff;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.register-label {
+  font-size: 17px;
+  color: #f8fafc;
+  text-align: center;
+ 
+}
+
+.invite-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.register-input {
+  width: 100%;
+  height: 78px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
+  font-size: 22px;
+  padding: 0 22px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.register-input::placeholder {
+  color: #8d8d8d;
+}
+
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap .register-input {
+  padding-right: 72px;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.phone-row {
+  display: flex;
+  gap: 16px;
+}
+
+.prefix-select {
+  width: 110px;
+  height: 78px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 24px;
+  color: #111;
+  padding: 0 14px;
+  outline: none;
+}
+
+.phone-input {
+  flex: 1;
+}
+
+.captcha-row {
+  display: flex;
+  gap: 16px;
+}
+
+.captcha-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.captcha-box {
+  width: 190px;
+  height: 78px;
+  border: none;
+  background: #f8f0da;
+  color: #d97706;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
+.agree-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 4px;
+  color: #fff;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.agree-row input {
+  width: 28px;
+  height: 28px;
+  margin-top: 4px;
+  accent-color: #fff;
+}
+
+.agree-row a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.signup-btn {
+  width: 100%;
+  height: 86px;
+  border: none;
+  border-radius: 10px;
+  background: #73addd;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.signup-btn:disabled {
+  opacity: 0.85;
+  cursor: not-allowed;
+}
+
+.success {
+  margin-top: 18px;
+  text-align: center;
+  color: #86efac;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.contact-us {
+  margin-top: 34px;
+  text-align: right;
+}
+
+.contact-us a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .register-container {
+    padding: 18px 16px 34px;
+  }
+
+  .register-title {
+    font-size: 28px;
+  }
+
+  .register-input,
+  .prefix-select,
+  .captcha-box {
+    height: 66px;
+    font-size: 22px;
+  }
+
+  .captcha-box {
+    width: 150px;
+    font-size: 28px;
+  }
+
+  .signup-btn {
+    height: 74px;
+    font-size: 22px;
+  }
+
+  .contact-us a {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .register-title {
+    font-size: 26px;
+  }
+
+  .register-input,
+  .prefix-select,
+  .captcha-box {
+    height: 58px;
+    font-size: 18px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .phone-row,
+  .captcha-row {
+    gap: 10px;
+  }
+
+  .prefix-select {
+    width: 88px;
+  }
+
+  .captcha-box {
+    width: 110px;
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
+
+  .register-label {
+    font-size: 15px;
+  }
+
+  .agree-row {
+    font-size: 14px;
+  }
+
+  .agree-row input {
+    width: 22px;
+    height: 22px;
+  }
+
+  .signup-btn {
+    height: 60px;
+    font-size: 18px;
+  }
+
+  .contact-us {
+    text-align: center;
+  }
+
+  .contact-us a {
+    font-size: 18px;
+  }
+
+  .eye-btn {
+    font-size: 22px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.register-label {
+  font-size: 13px;
+  color: #f8fafc;
+  text-align: left;
+  margin-bottom: -4px;
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+.register-input {
+  width: 100%;
+  height: 54px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
+  font-size: 18px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.prefix-select {
+  width: 88px;
+  height: 54px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 18px;
+  color: #111;
+  padding: 0 10px;
+  outline: none;
+}
+.captcha-box {
+  width: 110px;
+  height: 54px;
+  border: none;
+ background: linear-gradient(180deg,#081c34,#1a303a,#22c55e,#c2ad4e);
+  color: #00fae5;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
+
+.signup-btn {
+  width: 100%;
+  height: 58px;
+  border: none;
+  border-radius: 8px;
+  
+  background: #1d7c10;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.register-loader-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.register-loader-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.register-loader-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.register-loader-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+  font-weight: 800;
+  gap: 18px;
+}
+
+.register-solar-system {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.register-sun {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  box-shadow:
+    0 0 12px rgba(255, 217, 0, 0.8),
+    0 0 30px rgba(0, 255, 153, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.register-sun img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.register-orbit {
+  position: absolute;
+  border: 1px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.register-orbit-one {
+  width: 110px;
+  height: 110px;
+  animation: registerOrbitSpin 6s linear infinite;
+}
+
+.register-orbit-two {
+  width: 80px;
+  height: 80px;
+  animation: registerOrbitSpinReverse 4s linear infinite;
+}
+
+.register-planet-ball {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
+}
+
+.register-planet-ball.small {
+  font-size: 18px;
+  top: -10px;
+}
+
+@keyframes registerOrbitSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes registerOrbitSpinReverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+
+
+
+.language-top {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.language-top select {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -1,0 +1,364 @@
+.account-container {
+
+ background: linear-gradient(180deg,#081c34,#1a303a,#22c55e,#c2ad4e);
+  color: #fff;
+  min-height: 100vh;
+  padding-bottom: 80px;
+  font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+   background: linear-gradient(180deg,#081c34,#1a303a,#22c55e,#c2ad4e);
+  
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.online-dot {
+  width: 10px;
+  height: 10px;
+  background: #00ff88;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.username {
+  background: #1a1a1a;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.wallet-box {
+  background: #1a1a1a;
+  padding: 8px 12px;
+  border-radius: 20px;
+}
+
+/* BALANCE */
+.balance-section {
+  padding: 15px;
+}
+
+.balance-section h1 {
+  font-size: 28px;
+}
+
+.available {
+  color: #ffe600 ;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+.actions button {
+   background: linear-gradient(180deg,#081c34,#c2ad4e);
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* MARKET */
+.market-card {
+  background: #1a1a1a;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.chart-placeholder {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* REWARD */
+.reward-box {
+   
+   background: linear-gradient(180deg,#081c34,#38bdf8,#22c55e,#c2ad4e);
+  margin: 15px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* ASSETS */
+.assets {
+  padding: 15px;
+}
+
+.asset-item {
+  display: flex;
+  justify-content: space-between;
+  background: #1a1a1a;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  background: #111;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.bottom-nav button {
+  background: none;
+  border: none;
+  color: #aaa;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.bottom-nav .active {
+  color: #00ff88;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #111;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  z-index: 100;
+}
+
+.bottom-nav button {
+  background: none;
+  border: none;
+  color: #888;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+/* 🔥 ACTIVE STYLE */
+.bottom-nav .active {
+  color: #00ff88;
+  transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+.mybets-loader-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.mybets-loader-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mybets-loader-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.mybets-loader-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+  font-weight: 800;
+  gap: 18px;
+}
+
+.mybets-solar-system {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.mybets-sun {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  box-shadow:
+    0 0 12px rgba(255, 217, 0, 0.8),
+    0 0 30px rgba(0, 255, 153, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.mybets-sun img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.mybets-orbit {
+  position: absolute;
+  border: 1px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mybets-orbit-one {
+  width: 110px;
+  height: 110px;
+  animation: mybetsOrbitSpin 6s linear infinite;
+}
+
+.mybets-orbit-two {
+  width: 80px;
+  height: 80px;
+  animation: mybetsOrbitSpinReverse 4s linear infinite;
+}
+
+.mybets-planet-ball {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
+}
+
+.mybets-planet-ball.small {
+  font-size: 18px;
+  top: -10px;
+}
+
+@keyframes mybetsOrbitSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes mybetsOrbitSpinReverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+
+
+
+
+.top-bar {
+  padding: 10px 15px;
+}
+
+.back-btn {
+  background: #52ff02;
+  border: none;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+
+.top-bar {
+  padding: 10px 15px;
+}
+
+.back-btn {
+  background: #88ff00;
+  border: none;
+  color: #000000;
+  padding: 8px 15px;
+  border-radius: 10px;
+}
+
+.reward-stats {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.stat-item {
+  background: #1a1a1a;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.stat-item p {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 5px;
+}
+
+.stat-item span {
+  font-size: 14px;
+  font-weight: bold;
+  color: #00ff88;
+}
+
+
+.match-time {
+  text-align: center;
+  font-size: 11px;
+  margin-top: 4px;
+  opacity: 0.85;
+}

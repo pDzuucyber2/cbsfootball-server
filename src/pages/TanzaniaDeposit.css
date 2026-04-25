@@ -1,0 +1,72 @@
+.tz-container {
+  height: 60vh;
+  background: linear-gradient(180deg,#081c34,#c2ad4e);
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Arial;
+  text-align: center;
+  padding: 20px;
+}
+
+
+.back-btn {
+  background: rgba(255,255,255,0.15);
+  border: left;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+/* TITLE */
+.tz-container h1 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+/* OPTIONS */
+.tz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* CARD */
+.tz-card {
+  padding: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 2px solid #fff;
+}
+
+/* STYLES */
+.business {
+  background: linear-gradient(180deg,#2e7d32,#66bb6a);
+}
+
+.mobile {
+  background: linear-gradient(180deg,#1565c0,#42a5f5);
+}
+
+.call {
+  background: linear-gradient(180deg,#6a1b9a,#ba68c8);
+}
+
+/* HOVER */
+.tz-card:hover {
+  transform: scale(1.05);
+}

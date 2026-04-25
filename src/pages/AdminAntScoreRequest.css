@@ -1,0 +1,162 @@
+/* 🔥 GLOBAL */
+body {
+  margin: 0;
+  padding: 0;
+  background: #0f172a;
+  font-family: Arial, sans-serif;
+}
+
+/* 🔥 TITLE */
+h2 {
+  text-align: center;
+  color: #ffffff;
+  margin: 15px 0;
+}
+
+/* 🔥 SEARCH */
+input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #1e293b;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* 🔥 MESSAGE */
+p {
+  text-align: center;
+  color: #22c55e;
+  font-weight: bold;
+}
+
+/* 🔥 TABLE WRAPPER */
+table {
+  width: 95%;
+  margin: 10px auto;
+  border-collapse: collapse;
+  background: #1e293b;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* 🔥 HEADER */
+thead {
+  background: #334155;
+}
+
+th {
+  padding: 10px;
+  font-size: 12px;
+  color: #e2e8f0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* 🔥 BODY */
+td {
+  padding: 8px;
+  font-size: 12px;
+  color: #cbd5f5;
+  text-align: center;
+  border-top: 1px solid #334155;
+}
+
+/* 🔥 ROW HOVER */
+tr:hover {
+  background: #273549;
+}
+
+/* 🔥 STATUS COLORS */
+td:nth-child(15) {
+  font-weight: bold;
+}
+
+td:nth-child(15):contains("win"),
+td:nth-child(15):contains("Won") {
+  color: #22c55e;
+}
+
+td:nth-child(15):contains("lose"),
+td:nth-child(15):contains("Lost") {
+  color: #ef4444;
+}
+
+td:nth-child(15):contains("PENDING") {
+  color: #facc15;
+}
+
+/* 🔥 PAID */
+td:nth-child(16) {
+  font-size: 16px;
+}
+
+/* 🔥 BUTTONS */
+button {
+  padding: 6px 10px;
+  margin: 2px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: 0.2s;
+}
+
+/* WON */
+button:nth-child(1) {
+  background: #22c55e;
+  color: white;
+}
+
+button:nth-child(1):hover {
+  background: #16a34a;
+}
+
+/* LOST */
+button:nth-child(2) {
+  background: #ef4444;
+  color: white;
+}
+
+button:nth-child(2):hover {
+  background: #dc2626;
+}
+
+/* DELETE */
+button:nth-child(3) {
+  background: #64748b;
+  color: white;
+}
+
+button:nth-child(3):hover {
+  background: #475569;
+}
+
+/* 🔥 RESPONSIVE */
+@media (max-width: 1000px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* 🔥 MOBILE */
+@media (max-width: 600px) {
+
+  th, td {
+    padding: 6px;
+    font-size: 10px;
+  }
+
+  input {
+    width: 95%;
+  }
+
+}

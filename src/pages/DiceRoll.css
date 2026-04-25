@@ -1,0 +1,243 @@
+.dice-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(99, 102, 241, 0.18), transparent 28%),
+    radial-gradient(circle at right, rgba(168, 85, 247, 0.14), transparent 24%),
+    linear-gradient(180deg, #050816 0%, #090f24 45%, #050816 100%);
+  color: #fff;
+  padding: 14px;
+  padding-bottom: 100px;
+}
+
+.dice-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.dice-box {
+  background: rgba(17, 24, 39, 0.92);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  border-radius: 18px;
+  padding: 14px 12px;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.dice-box p {
+  margin: 0 0 8px;
+  color: #67e8f9;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.dice-box h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  word-break: break-word;
+}
+
+.dice-card {
+  background:
+    linear-gradient(180deg, rgba(28, 37, 65, 0.96), rgba(11, 17, 34, 0.96));
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  border-radius: 22px;
+  padding: 18px 14px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.dice-card > p {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 800;
+  color: #c4b5fd;
+}
+
+.dice-bet-row {
+  display: grid;
+  grid-template-columns: 64px 1fr 64px;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.dice-bet-row button {
+  height: 56px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #1f2a44, #111827);
+  color: #fff;
+  font-size: 30px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+}
+
+.dice-bet-row button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dice-bet-row input {
+  width: 100%;
+  height: 56px;
+  border: none;
+  outline: none;
+  border-radius: 16px;
+  background: #f8fafc;
+  color: #0f172a;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  padding: 0 10px;
+}
+
+.dice-info {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 12px 10px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.dice-info p {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.dice-info p:last-child {
+  margin-bottom: 0;
+  color: #facc15;
+}
+
+.dice-card button:last-child {
+  width: 100%;
+  border: none;
+  border-radius: 18px;
+  padding: 16px 12px;
+  background: linear-gradient(180deg, #34d399, #10b981);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(16, 185, 129, 0.26);
+}
+
+.dice-card button:last-child:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.dice-message {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 900;
+  color: #facc15;
+  padding-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  .dice-page {
+    padding: 10px;
+    padding-bottom: 90px;
+  }
+
+  .dice-top {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .dice-box {
+    padding: 12px 10px;
+    border-radius: 16px;
+  }
+
+  .dice-box p {
+    font-size: 12px;
+  }
+
+  .dice-box h3 {
+    font-size: 18px;
+  }
+
+  .dice-card {
+    padding: 14px 10px;
+    border-radius: 18px;
+  }
+
+  .dice-card > p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .dice-bet-row {
+    grid-template-columns: 56px 1fr 56px;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .dice-bet-row button {
+    height: 50px;
+    font-size: 26px;
+    border-radius: 14px;
+  }
+
+  .dice-bet-row input {
+    height: 50px;
+    font-size: 22px;
+    border-radius: 14px;
+  }
+
+  .dice-info {
+    padding: 10px 8px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+  }
+
+  .dice-info p {
+    font-size: 13px;
+  }
+
+  .dice-card button:last-child {
+    padding: 14px 10px;
+    font-size: 17px;
+    border-radius: 16px;
+  }
+
+  .dice-message {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .dice-box h3 {
+    font-size: 16px;
+  }
+
+  .dice-bet-row {
+    grid-template-columns: 50px 1fr 50px;
+  }
+
+  .dice-bet-row button {
+    font-size: 24px;
+  }
+
+  .dice-bet-row input {
+    font-size: 20px;
+  }
+
+  .dice-info p {
+    font-size: 12px;
+  }
+
+  .dice-message {
+    font-size: 15px;
+  }
+}

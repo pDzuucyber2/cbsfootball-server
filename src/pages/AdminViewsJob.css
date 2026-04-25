@@ -1,0 +1,173 @@
+/* 🔥 PAGE */
+.admin-full {
+  padding: 20px;
+  color: #fff;
+  background: linear-gradient(180deg, #0f172a, #1e3a8a);
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* 🔥 TITLE */
+.admin-full h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 🔍 SEARCH */
+.admin-full input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* 🔥 SECTION BOX */
+.table-box {
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+}
+
+/* 🔥 SECTION TITLE */
+.table-box h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* 🟢 WON TITLE */
+.table-box.won h3 {
+  color: #22c55e;
+}
+
+/* 🔴 LOST TITLE */
+.table-box.lost h3 {
+  color: #ef4444;
+}
+
+/* 🟡 PENDING TITLE */
+.table-box.pending h3 {
+  color: #facc15;
+}
+
+/* 🔥 TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: transparent;
+}
+
+/* 🔥 HEAD */
+thead {
+  background: #1e293b;
+}
+
+th {
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 1px solid #334155;
+  white-space: nowrap;
+}
+
+/* 🔥 BODY */
+td {
+  padding: 8px;
+  border-bottom: 1px solid #1e293b;
+  white-space: nowrap;
+}
+
+/* 🔥 ROW HOVER */
+tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* 🔥 STATUS COLORS */
+.status-win {
+  color: #22c55e;
+  font-weight: bold;
+}
+
+.status-lost {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.status-pending {
+  color: #facc15;
+  font-weight: bold;
+}
+
+/* 🔥 BUTTON BASE */
+button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s ease;
+}
+
+/* 🟢 WON BUTTON */
+.win-btn {
+  background: #22c55e;
+  color: white;
+}
+
+/* 🔴 LOST BUTTON */
+.lost-btn {
+  background: #f97316;
+  color: white;
+}
+
+/* ❌ DELETE BUTTON */
+.delete-btn {
+  background: #ef4444;
+  color: white;
+}
+
+/* 🔥 HOVER EFFECT */
+button:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* 🔥 SCROLL TABLE (mobile safe) */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 768px) {
+
+  table {
+    font-size: 11px;
+  }
+
+  th, td {
+    padding: 6px;
+  }
+
+  .admin-full {
+    padding: 10px;
+  }
+
+}
+
+/* 📱 SMALL DEVICES */
+@media (max-width: 500px) {
+
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 900px;
+  }
+
+}

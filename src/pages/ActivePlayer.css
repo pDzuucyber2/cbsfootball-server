@@ -1,0 +1,78 @@
+.online-container {
+background: linear-gradient(180deg,#081c34,#38bdf8,#22c55e,#c2ad4e);
+  padding: 15px;
+  border-radius: 12px;
+  color: white;
+}
+
+/* TITLE */
+.online-title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* USER CARD */
+.online-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e293b;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: 0.2s;
+}
+
+.online-user:hover {
+  background: #334155;
+}
+
+/* LEFT SIDE */
+.online-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+}
+
+/* GREEN DOT */
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: blink 1.2s infinite;
+}
+
+/* BLINK EFFECT */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+/* AMOUNT */
+.online-amount {
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+/* NO DATA */
+.no-data {
+  text-align: center;
+  opacity: 0.6;
+}
+
+
+
+.top-bar {
+  margin-bottom: 10px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #38bdf8;
+  font-size: 16px;
+  cursor: pointer;
+}

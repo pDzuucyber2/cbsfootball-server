@@ -1,0 +1,60 @@
+.casino-preview-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #06112b 0%, #020617 100%);
+  padding: 16px;
+  padding-bottom: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.casino-preview-card {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(34, 211, 238, 0.22);
+  border-radius: 22px;
+  padding: 14px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.casino-preview-image {
+  width: 100%;
+  border-radius: 18px;
+  display: block;
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+
+.casino-preview-status {
+  text-align: center;
+  background: linear-gradient(180deg, #1d4ed8, #1e3a8a);
+  color: #fff;
+  padding: 12px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.casino-preview-start {
+  text-align: center;
+  background: linear-gradient(180deg, #10b981, #047857);
+  color: #fff;
+  padding: 12px;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.casino-preview-message {
+  background: #0f172a;
+  border: 1px solid rgba(250, 204, 21, 0.2);
+  color: #f8fafc;
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: center;
+}

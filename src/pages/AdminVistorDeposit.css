@@ -1,0 +1,108 @@
+.admin-container{
+  padding:20px;
+  background: linear-gradient(135deg, #0a0f2c, #0f1b5c);
+  min-height: 100vh;
+  color: white;
+}
+
+/* TABLE */
+.deposit-table{
+  width:100%;
+  border-collapse:collapse;
+  background: #0d1a4d;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.deposit-table th,
+.deposit-table td{
+  border:1px solid rgba(255,255,255,0.1);
+  padding:10px;
+  text-align:center;
+}
+
+/* HEADER */
+.deposit-table th{
+  background: linear-gradient(90deg, #1a2eff, #00bfff);
+  color:white;
+  font-weight:bold;
+}
+
+/* ROW HOVER */
+.deposit-table tr:hover{
+  background: rgba(0, 191, 255, 0.15);
+  transition: 0.3s;
+}
+
+/* STATUS SELECT */
+.status-select{
+  padding:6px 10px;
+  border-radius:6px;
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* Pending */
+.status-select.pending{
+  background:#6c757d;
+  color:white;
+}
+
+/* Processing */
+.status-select.processing{
+  background:#00bfff;
+  color:black;
+}
+
+/* Success */
+.status-select.success{
+  background:#00ff88;
+  color:black;
+}
+
+/* Rejected */
+.status-select.rejected{
+  background:#ff3b3b;
+  color:white;
+}
+
+/* Expired */
+.status-select.Expired{
+  background:#8b0000;
+  color:white;
+}
+
+
+
+
+
+
+
+
+.deposit-type {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.deposit-first {
+  background: rgba(0, 200, 83, 0.15);
+  color: #00e676;
+  border: 1px solid rgba(0, 200, 83, 0.4);
+}
+
+.deposit-second {
+  background: rgba(33, 150, 243, 0.15);
+  color: #42a5f5;
+  border: 1px solid rgba(33, 150, 243, 0.4);
+}
+
+.deposit-other {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffd54f;
+  border: 1px solid rgba(255, 193, 7, 0.4);
+}

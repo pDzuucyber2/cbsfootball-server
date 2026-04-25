@@ -1,0 +1,380 @@
+.bet-history-page {
+  min-height: 100vh;
+  background: #0f172a;
+  color: #fff;
+  padding: 16px;
+  padding-bottom: 90px;
+}
+
+/* TITLE */
+.history-title {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* TABS */
+.history-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.history-tab {
+  flex: 1;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  background: #1e293b;
+  color: #cbd5e1;
+  transition: 0.2s;
+}
+
+.history-tab.active {
+  background: #22c55e;
+  color: #fff;
+}
+
+/* SECTIONS */
+.history-sections-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.history-sections-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.history-sections-scroll::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
+
+.history-section-btn {
+  border: none;
+  white-space: nowrap;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: #1e293b;
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.history-section-btn.active {
+  background: #38bdf8;
+  color: #00111f;
+}
+
+/* 🔥 SUMMARY (NDOGO + HORIZONTAL) */
+.history-summary {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+}
+
+.history-summary::-webkit-scrollbar {
+  height: 5px;
+}
+
+.history-summary::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
+
+/* 🔥 BOX NDOGO */
+.summary-card {
+  min-width: 110px;
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 10px 8px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.summary-card p {
+  margin: 0;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.summary-card h3 {
+  margin: 6px 0 0;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 800;
+}
+
+/* LIST */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* CARD */
+.history-card {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: 0.2s;
+}
+
+.history-card:hover {
+  transform: translateY(-2px);
+}
+
+/* TOP ROW */
+.history-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.history-bet-id {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+/* STATUS */
+.history-status {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.history-status.pending {
+  background: #f59e0b;
+  color: #fff;
+}
+
+.history-status.won {
+  background: #22c55e;
+  color: #fff;
+}
+
+.history-status.lost {
+  background: #ef4444;
+  color: #fff;
+}
+
+.history-status.cancelled {
+  background: #64748b;
+  color: #fff;
+}
+
+/* MATCH */
+.history-match {
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.history-match span {
+  color: #38bdf8;
+  margin: 0 6px;
+}
+
+/* LEAGUE */
+.history-league {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 10px;
+}
+
+/* GRID (DETAILS) */
+.history-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* INFO ROW */
+.history-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+}
+
+.history-info-row span {
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+.history-info-row b {
+  font-size: 12px;
+  color: #fff;
+  text-align: right;
+  font-weight: 800;
+}
+
+/* 🔥 SCORE COLORS */
+.score-text {
+  color: #22c55e;
+  font-weight: 900;
+}
+
+.final-score-text {
+  color: #facc15;
+  font-weight: 900;
+}
+
+/* EMPTY */
+.history-empty {
+  text-align: center;
+  padding: 30px 12px;
+  background: #1e293b;
+  border-radius: 14px;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .history-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.history-loader-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.history-loader-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.history-loader-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.history-loader-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+  font-weight: 800;
+  gap: 18px;
+}
+
+.history-solar-system {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.history-sun {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  box-shadow:
+    0 0 12px rgba(255, 217, 0, 0.8),
+    0 0 30px rgba(0, 255, 153, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.history-sun img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.history-orbit {
+  position: absolute;
+  border: 1px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.history-orbit-one {
+  width: 110px;
+  height: 110px;
+  animation: historyOrbitSpin 6s linear infinite;
+}
+
+.history-orbit-two {
+  width: 80px;
+  height: 80px;
+  animation: historyOrbitSpinReverse 4s linear infinite;
+}
+
+.history-planet-ball {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
+}
+
+.history-planet-ball.small {
+  font-size: 18px;
+  top: -10px;
+}
+
+@keyframes historyOrbitSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes historyOrbitSpinReverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}

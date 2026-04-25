@@ -1,0 +1,124 @@
+/* 🔥 BACKGROUND */
+.team-container {
+  min-height: 100vh;
+  padding: 15px;
+  background: linear-gradient(180deg, #0f172a, #16a34a);
+  color: white;
+}
+
+/* 🔥 TOP BAR */
+.top-bar {
+  margin-bottom: 10px;
+}
+
+.top-bar button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* 🔥 TITLE */
+.title {
+  text-align: center;
+  margin: 10px 0 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* 🔥 GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* 🔥 CARD */
+.card {
+background: linear-gradient(180deg, #144a6e, #a9ee08);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px rgba(0,255,150,0.2);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,255,150,0.5);
+}
+
+/* 🔥 TEXT */
+.card p {
+  margin: 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.card h1 {
+  margin-top: 10px;
+  font-size: 28px;
+  color: #00ff9c;
+}
+
+/* 🔥 DETAILS SECTION */
+.details {
+  margin-top: 20px;
+  background: linear-gradient(180deg, #04afff,#8e9110, #07e95d);
+
+  border-radius: 15px;
+  padding: 15px;
+  animation: fadeIn 0.3s ease;
+}
+
+.details h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #00ff9c;
+}
+
+/* 🔥 USER ITEM */
+.user {
+  padding: 10px;
+  border-bottom: 1px solid #222;
+  font-size: 14px;
+}
+
+.user:last-child {
+  border-bottom: none;
+}
+
+/* 🔥 ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.view-text {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.details-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  text-align: center;
+}
