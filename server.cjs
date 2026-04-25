@@ -640,7 +640,6 @@ app.get("/main", (req, res) => {
 /* =======================
    LOGO PROXY
 ======================= */
-
 app.get("/logo", async (req, res) => {
   try {
     const { url } = req.query;
@@ -650,35 +649,49 @@ app.get("/logo", async (req, res) => {
 
     const headers = {
       "User-Agent": "Mozilla/5.0",
-      "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/,/*;q=0.8",
-      "Referer": "https://www.google.com/",
+      Accept: "image/,/*;q=0.8",
+      Referer: "https://www.sofascore.com/",
     };
 
-    let response = await fetchFn(cleanUrl, { headers });
+    const urlsToTry = [cleanUrl];
 
-    if (!response.ok) {
-      const proxyUrl = `https://images.weserv.nl/?url=${encodeURIComponent(
-        cleanUrl
-      )}&w=120&h=120&fit=contain`;
-
-      response = await fetchFn(proxyUrl, { headers });
+    // SofaScore fallback
+    const sofaMatch = cleanUrl.match(/team\/(\d+)\/image/);
+    if (sofaMatch) {
+      const teamId = sofaMatch[1];
+      urlsToTry.push(`https://api.sofascore.com/api/v1/team/${teamId}/image`);
+      urlsToTry.push(`https://img.sofascore.com/api/v1/team/${teamId}/image`);
     }
 
-    if (!response.ok) {
-      return res.status(404).send("Image not found");
+    // weserv fallback
+    urlsToTry.push(
+      `https://images.weserv.nl/?url=${cleanUrl.replace(/^https?:\/\//, "")}&w=120&h=120&fit=contain`
+    );
+
+    for (const u of urlsToTry) {
+      try {
+        const response = await fetchFn(u, { headers });
+
+        if (!response.ok) continue;
+
+        const contentType = response.headers.get("content-type") || "image/png";
+        const buffer = await response.arrayBuffer();
+
+        res.set("Content-Type", contentType);
+        res.set("Cache-Control", "public, max-age=86400");
+        return res.send(Buffer.from(buffer));
+      } catch (e) {
+        console.log("Logo try failed:", u);
+      }
     }
 
-    const contentType = response.headers.get("content-type") || "image/png";
-    const buffer = await response.arrayBuffer();
-
-    res.set("Content-Type", contentType);
-    res.set("Cache-Control", "public, max-age=86400");
-    res.send(Buffer.from(buffer));
+    return res.status(404).send("Image not found");
   } catch (err) {
     console.error("LOGO ERROR:", err.message);
     res.status(500).send("Error loading image");
   }
 });
+
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
