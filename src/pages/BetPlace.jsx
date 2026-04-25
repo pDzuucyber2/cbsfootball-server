@@ -65,7 +65,7 @@ export default function BetPlace() {
   const BASE_URL =
     window.location.hostname === "localhost"
       ? "http://localhost:5000"
-       : "https://cbsfootball.onrender.com";
+       : "https://cbsfootball-server.onrender.com";
 
   const MINIMUMS = {
     TZS: 10000,

@@ -21,7 +21,7 @@ export default function GoMatchesForReferrer() {
   const BASE_URL =
     window.location.hostname === "localhost"
       ? "http://localhost:5000"
-      : `http://${window.location.hostname}:5000`;
+      : "https://cbsfootball-server.onrender.com";
 
   const getInitials = (name) => {
     if (!name) return "FC";

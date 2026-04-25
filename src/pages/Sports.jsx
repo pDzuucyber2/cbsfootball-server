@@ -19,7 +19,7 @@ const BASE_COUNTS = {
 const SERVER_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:5000"
-    : "https://cbsfootball.onrender.com";
+    : "https://cbsfootball-server.onrender.com";
 
 export default function Sports() {
   const [matches, setMatches] = useState([]);

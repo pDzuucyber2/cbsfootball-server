@@ -18,7 +18,7 @@ const [visible,setVisible] = useState(6);
 const BASE_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:5000"
-    : `http://${window.location.hostname}:5000`;
+    : "https://cbsfootball-server.onrender.com";
 
 /* INITIALS */
 const getInitials = (name) => {

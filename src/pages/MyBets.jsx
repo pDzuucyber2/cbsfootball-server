@@ -53,7 +53,7 @@ export default function MyBets() {
   const BASE_URL =
     window.location.hostname === "localhost"
       ? "http://localhost:5000"
-     : "https://cbsfootball.onrender.com";
+     : "https://cbsfootball-server.onrender.com";
 
   const fieldMap = {
     TZS: "tshBalance",

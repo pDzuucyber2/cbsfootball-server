@@ -11,7 +11,7 @@ export default function AdminSweepWallet() {
   const SERVER_URL =
     window.location.hostname === "localhost"
       ? "http://localhost:5000"
-      : "https://cbsfootball.onrender.com";
+      : "https://cbsfootball-server.onrender.com";
 
   const format = (n) =>
     Number(n || 0).toLocaleString(undefined, {
