@@ -648,30 +648,32 @@ app.get("/logo", async (req, res) => {
     const cleanUrl = decodeURIComponent(url);
 
     const headers = {
-      "User-Agent": "Mozilla/5.0",
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
       Accept: "image/,/*;q=0.8",
       Referer: "https://www.sofascore.com/",
     };
 
     const urlsToTry = [cleanUrl];
 
-    // SofaScore fallback
     const sofaMatch = cleanUrl.match(/team\/(\d+)\/image/);
     if (sofaMatch) {
       const teamId = sofaMatch[1];
+
+      urlsToTry.push(`https://api.sofascore.app/api/v1/team/${teamId}/image`);
       urlsToTry.push(`https://api.sofascore.com/api/v1/team/${teamId}/image`);
       urlsToTry.push(`https://img.sofascore.com/api/v1/team/${teamId}/image`);
+      urlsToTry.push(
+        `https://images.weserv.nl/?url=api.sofascore.app/api/v1/team/${teamId}/image&w=120&h=120&fit=contain`
+      );
+      urlsToTry.push(
+        `https://images.weserv.nl/?url=api.sofascore.com/api/v1/team/${teamId}/image&w=120&h=120&fit=contain`
+      );
     }
-
-    // weserv fallback
-    urlsToTry.push(
-      `https://images.weserv.nl/?url=${cleanUrl.replace(/^https?:\/\//, "")}&w=120&h=120&fit=contain`
-    );
 
     for (const u of urlsToTry) {
       try {
         const response = await fetchFn(u, { headers });
-
         if (!response.ok) continue;
 
         const contentType = response.headers.get("content-type") || "image/png";
@@ -681,7 +683,7 @@ app.get("/logo", async (req, res) => {
         res.set("Cache-Control", "public, max-age=86400");
         return res.send(Buffer.from(buffer));
       } catch (e) {
-        console.log("Logo try failed:", u);
+        console.log("Logo try failed:", u, e.message);
       }
     }
 
@@ -691,7 +693,6 @@ app.get("/logo", async (req, res) => {
     res.status(500).send("Error loading image");
   }
 });
-
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
