@@ -644,31 +644,38 @@ app.get("/main", (req, res) => {
 app.get("/logo", async (req, res) => {
   try {
     const { url } = req.query;
-
     if (!url) return res.status(400).send("No URL");
 
-    const proxyUrl = `https://images.weserv.nl/?url=${encodeURIComponent(
-      url
-    )}&w=120`;
+    const cleanUrl = decodeURIComponent(url);
 
-    let response = await fetchFn(proxyUrl);
+    const headers = {
+      "User-Agent": "Mozilla/5.0",
+      "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/,/*;q=0.8",
+      "Referer": "https://www.google.com/",
+    };
+
+    let response = await fetchFn(cleanUrl, { headers });
 
     if (!response.ok) {
-      response = await fetchFn(url);
+      const proxyUrl = `https://images.weserv.nl/?url=${encodeURIComponent(
+        cleanUrl
+      )}&w=120&h=120&fit=contain`;
 
-      if (!response.ok) {
-        return res.status(404).send("Image not found");
-      }
+      response = await fetchFn(proxyUrl, { headers });
     }
 
+    if (!response.ok) {
+      return res.status(404).send("Image not found");
+    }
+
+    const contentType = response.headers.get("content-type") || "image/png";
     const buffer = await response.arrayBuffer();
 
-    res.set("Content-Type", "image/png");
+    res.set("Content-Type", contentType);
     res.set("Cache-Control", "public, max-age=86400");
-
     res.send(Buffer.from(buffer));
   } catch (err) {
-    console.error("LOGO ERROR:", err);
+    console.error("LOGO ERROR:", err.message);
     res.status(500).send("Error loading image");
   }
 });
