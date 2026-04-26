@@ -12,10 +12,8 @@ import {
 import "./MyBets.css";
 import { useBalance } from "../context/BalanceContext";
 
-/* 🔥 CACHE */
 const failedLogos = new Set();
 
-/* 🔥 LOADING SCREEN */
 const SolarLoader = () => (
   <div className="mybets-loader-screen">
     <img src="/images/player.png" className="mybets-loader-bg" alt="loading" />
@@ -53,7 +51,7 @@ export default function MyBets() {
   const BASE_URL =
     window.location.hostname === "localhost"
       ? "http://localhost:5000"
-     : "https://cbsfootball-server.onrender.com";
+      : "https://cbsfootball-server.onrender.com";
 
   const fieldMap = {
     TZS: "tshBalance",
@@ -81,8 +79,9 @@ export default function MyBets() {
     if (!value) return 0;
     if (typeof value?.toDate === "function") return value.toDate().getTime();
     if (value?.seconds) return value.seconds * 1000;
+
     const parsed = new Date(value).getTime();
-    return isNaN(parsed) ? 0 : parsed;
+    return Number.isNaN(parsed) ? 0 : parsed;
   };
 
   const getStatusPriority = (bet) => {
@@ -103,6 +102,83 @@ export default function MyBets() {
     return t2 - t1;
   };
 
+  const getInitials = (name) => {
+    if (!name) return "FC";
+
+    return String(name)
+      .split(" ")
+      .map((w) => w[0])
+      .slice(0, 2)
+      .join("")
+      .toUpperCase();
+  };
+
+  const getServerLogo = (url) => {
+    if (!url || failedLogos.has(url)) return "";
+    return `${BASE_URL}/logo?url=${encodeURIComponent(url)}`;
+  };
+
+  const getWeservLogo = (url) => {
+    if (!url) return "";
+    if (url.includes("images.weserv.nl")) return url;
+
+    return `https://images.weserv.nl/?url=${url.replace(
+      /^https?:\/\//,
+      ""
+    )}&w=120&h=120&fit=contain`;
+  };
+
+  const Logo = memo(({ src, name, side, match }) => {
+    const [logoSrc, setLogoSrc] = useState(() => getServerLogo(src));
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+      setLogoSrc(getServerLogo(src));
+      setError(false);
+    }, [src]);
+
+    const aMissing = !match?.logoA || failedLogos.has(match?.logoA);
+    const bMissing = !match?.logoB || failedLogos.has(match?.logoB);
+
+    let bgColor = "#000";
+
+    if (aMissing && bMissing) {
+      bgColor = side === "left" ? "#000" : "#ff0000";
+    }
+
+    if (!src || error || failedLogos.has(src)) {
+      return (
+        <div className="logo-fallback" style={{ background: bgColor }}>
+          {getInitials(name)}
+        </div>
+      );
+    }
+
+    return (
+      <img
+        src={logoSrc}
+        alt={name || "team logo"}
+        className="team-logo"
+        loading="lazy"
+        referrerPolicy="no-referrer"
+        onError={() => {
+          if (logoSrc?.includes(BASE_URL)) {
+            setLogoSrc(src);
+            return;
+          }
+
+          if (logoSrc === src) {
+            setLogoSrc(getWeservLogo(src));
+            return;
+          }
+
+          failedLogos.add(src);
+          setError(true);
+        }}
+      />
+    );
+  });
+
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -120,9 +196,7 @@ export default function MyBets() {
         setMatchesMap(map);
 
         const antSnap = await getDocs(collection(standardDb, "antscore"));
-        const correctSnap = await getDocs(
-          collection(standardDb, "correctscore")
-        );
+        const correctSnap = await getDocs(collection(standardDb, "correctscore"));
 
         const antData = antSnap.docs
           .map((d) => ({ id: d.id, ...d.data() }))
@@ -192,20 +266,9 @@ export default function MyBets() {
       const update = () => {
         if (!timestamp) return;
 
-        if (result === "win") {
-          setTime("WON");
-          return;
-        }
-
-        if (result === "lose") {
-          setTime("LOST");
-          return;
-        }
-
-        if (result === "cancelled") {
-          setTime("CANCELLED");
-          return;
-        }
+        if (result === "win") return setTime("WON");
+        if (result === "lose") return setTime("LOST");
+        if (result === "cancelled") return setTime("CANCELLED");
 
         const matchDate = timestamp.toDate
           ? timestamp.toDate()
@@ -213,15 +276,8 @@ export default function MyBets() {
 
         const diff = matchDate - new Date();
 
-        if (diff <= -20 * 60 * 1000) {
-          setTime("STARTED");
-          return;
-        }
-
-        if (diff <= 0) {
-          setTime("STARTING");
-          return;
-        }
+        if (diff <= -20 * 60 * 1000) return setTime("STARTED");
+        if (diff <= 0) return setTime("STARTING");
 
         const s = Math.floor(diff / 1000);
         const h = Math.floor(s / 3600);
@@ -250,57 +306,6 @@ export default function MyBets() {
     };
   };
 
-  const getInitials = (name) =>
-    name
-      ?.split(" ")
-      .map((w) => w[0])
-      .slice(0, 2)
-      .join("")
-      .toUpperCase();
-
-  const Logo = memo(({ src, name, side, match }) => {
-    const [error, setError] = useState(false);
-
-    const proxyUrl = src
-      ? `${BASE_URL}/logo?url=${encodeURIComponent(src)}`
-      : null;
-
-    const aMissing = !match?.logoA || failedLogos.has(match?.logoA);
-    const bMissing = !match?.logoB || failedLogos.has(match?.logoB);
-
-    let bgColor = "#000";
-
-    if (aMissing && bMissing) {
-      bgColor = side === "left" ? "#000" : "#ff0000";
-    }
-
-    if (!src || error || failedLogos.has(src)) {
-      return (
-        <div className="logo-fallback" style={{ background: bgColor }}>
-          {getInitials(name)}
-        </div>
-      );
-    }
-
-    return (
-      <img
-        src={proxyUrl}
-        alt={name}
-        className="team-logo"
-        loading="lazy"
-        onError={(e) => {
-          if (!e.target.dataset.try1 && src) {
-            e.target.dataset.try1 = "1";
-            e.target.src = src;
-          } else {
-            failedLogos.add(src);
-            setError(true);
-          }
-        }}
-      />
-    );
-  });
-
   const getStatus = (bet) => {
     if (!bet.result) return "PENDING";
     if (bet.result === "win") return "WON";
@@ -324,11 +329,7 @@ export default function MyBets() {
         [bet.currency]: (prev[bet.currency] || 0) + Number(bet.amount),
       }));
 
-      const q = query(
-        collection(db, "users"),
-        where("username", "==", username)
-      );
-
+      const q = query(collection(db, "users"), where("username", "==", username));
       const userQuery = await getDocs(q);
 
       if (userQuery.empty) {
@@ -424,9 +425,7 @@ export default function MyBets() {
               <div className="match-time">{formatMatchTime(bet)}</div>
               <div className="league-box">{bet.league}</div>
 
-              <div className="bet-time">
-                YourPickTime: {formatCreatedAt(bet)}
-              </div>
+              <div className="bet-time">YourPickTime: {formatCreatedAt(bet)}</div>
 
               <div className="bottom-row">
                 <span>
@@ -437,6 +436,7 @@ export default function MyBets() {
               </div>
 
               <div className="time">Profit: {bet.profit}</div>
+
               <div className={`status ${getStatus(bet).toLowerCase()}`}>
                 {getStatus(bet)}
               </div>

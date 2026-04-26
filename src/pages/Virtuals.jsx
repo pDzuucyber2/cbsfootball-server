@@ -5,7 +5,6 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import "./Virtuals.css";
 
-/* CACHE YA LOGO MBOVU */
 const failedLogos = new Set();
 
 export default function GoMatchesForReferrer() {
@@ -25,7 +24,7 @@ export default function GoMatchesForReferrer() {
 
   const getInitials = (name) => {
     if (!name) return "FC";
-    return name
+    return String(name)
       .split(" ")
       .map((w) => w[0])
       .join("")
@@ -33,11 +32,78 @@ export default function GoMatchesForReferrer() {
       .toUpperCase();
   };
 
-  /* ✅ TUMIA MFUMO WA SPORTS KWA MUDA */
+  const getServerLogo = (url) => {
+    if (!url || failedLogos.has(url)) return "";
+    return `${BASE_URL}/logo?url=${encodeURIComponent(url)}`;
+  };
+
+  const getWeservLogo = (url) => {
+    if (!url) return "";
+    if (url.includes("images.weserv.nl")) return url;
+
+    return `https://images.weserv.nl/?url=${url.replace(
+      /^https?:\/\//,
+      ""
+    )}&w=120&h=120&fit=contain`;
+  };
+
+  const Logo = ({ src, name, match, side }) => {
+    const [logoSrc, setLogoSrc] = useState(() => getServerLogo(src));
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+      setLogoSrc(getServerLogo(src));
+      setError(false);
+    }, [src]);
+
+    const aMissing = !match?.logoA || failedLogos.has(match?.logoA);
+    const bMissing = !match?.logoB || failedLogos.has(match?.logoB);
+
+    let bgColor = "#000";
+
+    if (aMissing && bMissing) {
+      bgColor = side === "left" ? "#000" : "#ff0000";
+    }
+
+    if (!src || error || failedLogos.has(src)) {
+      return (
+        <div className="logo-fallback" style={{ background: bgColor }}>
+          {getInitials(name)}
+        </div>
+      );
+    }
+
+    return (
+      <img
+        className="team-logo"
+        src={logoSrc}
+        alt={name || "team logo"}
+        loading="lazy"
+        referrerPolicy="no-referrer"
+        onError={() => {
+          if (logoSrc?.includes(BASE_URL)) {
+            setLogoSrc(src);
+            return;
+          }
+
+          if (logoSrc === src) {
+            setLogoSrc(getWeservLogo(src));
+            return;
+          }
+
+          failedLogos.add(src);
+          setError(true);
+        }}
+      />
+    );
+  };
+
   const parseMatchDate = (dateStr) => {
     if (!dateStr) return null;
-    const parsed = new Date(dateStr.replace(" ", "T") + "Z");
-    if (isNaN(parsed.getTime())) return null;
+
+    const parsed = new Date(String(dateStr).replace(" ", "T") + "Z");
+    if (Number.isNaN(parsed.getTime())) return null;
+
     return parsed;
   };
 
@@ -69,7 +135,7 @@ export default function GoMatchesForReferrer() {
       depositDate = new Date(value);
     }
 
-    if (!(depositDate instanceof Date) || isNaN(depositDate.getTime())) {
+    if (!(depositDate instanceof Date) || Number.isNaN(depositDate.getTime())) {
       return false;
     }
 
@@ -92,10 +158,15 @@ export default function GoMatchesForReferrer() {
     const fifteenMinutes = 15 * 60 * 1000;
 
     const eatMatch = new Date(
-      matchDate.toLocaleString("en-US", { timeZone: "Africa/Dar_es_Salaam" })
+      matchDate.toLocaleString("en-US", {
+        timeZone: "Africa/Dar_es_Salaam",
+      })
     );
+
     const eatNow = new Date(
-      now.toLocaleString("en-US", { timeZone: "Africa/Dar_es_Salaam" })
+      now.toLocaleString("en-US", {
+        timeZone: "Africa/Dar_es_Salaam",
+      })
     );
 
     const isToday =
@@ -143,6 +214,7 @@ export default function GoMatchesForReferrer() {
     }
 
     const usersSnap = await getDocs(collection(db, "users"));
+
     const allUsers = usersSnap.docs.map((d) => ({
       id: d.id,
       ...d.data(),
@@ -150,7 +222,7 @@ export default function GoMatchesForReferrer() {
 
     const myReferrals = allUsers.filter(
       (u) =>
-        (u.referralBy || u.whoReferredWho || "").toLowerCase() ===
+        String(u.referralBy || u.whoReferredWho || "").toLowerCase() ===
         username.toLowerCase()
     );
 
@@ -164,6 +236,7 @@ export default function GoMatchesForReferrer() {
 
     for (const tx of allDeposits) {
       const depositUsername = tx.username || "";
+
       depositCountMap[depositUsername] =
         (depositCountMap[depositUsername] || 0) + 1;
 
@@ -176,7 +249,9 @@ export default function GoMatchesForReferrer() {
           : "other");
 
       const referredUserFound = myReferrals.find(
-        (u) => (u.username || "").toLowerCase() === depositUsername.toLowerCase()
+        (u) =>
+          String(u.username || "").toLowerCase() ===
+          depositUsername.toLowerCase()
       );
 
       if (
@@ -204,25 +279,21 @@ export default function GoMatchesForReferrer() {
         return;
       }
 
-      const goQuery = query(
-        collection(db, "matches"),
-        where("status", "==", "GO")
-      );
+      const goQuery = query(collection(db, "matches"), where("status", "==", "GO"));
 
       const snap = await getDocs(goQuery);
 
-      let data = snap.docs
+      const data = snap.docs
         .map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }))
-        .filter((m) => isTodayMatchAndMoreThan15Min(m.date));
-
-      data.sort((a, b) => {
-        const da = parseMatchDate(a.date)?.getTime() || 0;
-        const dbb = parseMatchDate(b.date)?.getTime() || 0;
-        return da - dbb;
-      });
+        .filter((m) => isTodayMatchAndMoreThan15Min(m.date))
+        .sort((a, b) => {
+          const da = parseMatchDate(a.date)?.getTime() || 0;
+          const dbb = parseMatchDate(b.date)?.getTime() || 0;
+          return da - dbb;
+        });
 
       setMatches(data);
     } catch (error) {
@@ -244,49 +315,6 @@ export default function GoMatchesForReferrer() {
       m.B?.toLowerCase().includes(search.toLowerCase()) ||
       m.league?.toLowerCase().includes(search.toLowerCase())
   );
-
-  const Logo = ({ src, name, match, side }) => {
-    const [error, setError] = useState(false);
-
-    const proxyUrl = src
-      ? `${BASE_URL}/logo?url=${encodeURIComponent(src)}`
-      : null;
-
-    const aMissing = !match.logoA || failedLogos.has(match.logoA);
-    const bMissing = !match.logoB || failedLogos.has(match.logoB);
-
-    let bgColor = "#000";
-
-    if (aMissing && bMissing) {
-      bgColor = side === "left" ? "#000" : "#ff0000";
-    }
-
-    if (!src || error || failedLogos.has(src)) {
-      return (
-        <div className="logo-fallback" style={{ background: bgColor }}>
-          {getInitials(name)}
-        </div>
-      );
-    }
-
-    return (
-      <img
-        className="team-logo"
-        src={proxyUrl}
-        alt={name}
-        loading="lazy"
-        onError={(e) => {
-          if (!e.target.dataset.try1 && src) {
-            e.target.dataset.try1 = "1";
-            e.target.src = src;
-          } else {
-            failedLogos.add(src);
-            setError(true);
-          }
-        }}
-      />
-    );
-  };
 
   const renderMatch = (m, i) => (
     <div
@@ -347,8 +375,8 @@ export default function GoMatchesForReferrer() {
 
           <p className="promo-text">
             If any of your referred users makes their first deposit today, you
-            will receive free first games tomorrow with odds ranging from 1.5%
-            to 3.5%.
+            will receive free first games tomorrow with odds ranging from 1.5% to
+            3.5%.
           </p>
         </div>
       </div>
@@ -374,9 +402,7 @@ export default function GoMatchesForReferrer() {
       )}
 
       {showMatches.length === 0 && (
-        <div style={{ padding: "10px", color: "#fff" }}>
-          No matches found
-        </div>
+        <div style={{ padding: "10px", color: "#fff" }}>No matches found</div>
       )}
     </div>
   );

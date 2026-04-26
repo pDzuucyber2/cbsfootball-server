@@ -6,40 +6,53 @@ import { collection, getDocs } from "firebase/firestore";
 
 import "./LeagueTabs.css";
 
-export default function LeagueTabs(){
+const failedLogos = new Set();
 
+const BASE_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://cbsfootball-server.onrender.com";
+
+export default function LeagueTabs() {
   const navigate = useNavigate();
-  const [leagues,setLeagues] = useState([]);
+  const [leagues, setLeagues] = useState([]);
 
-  /* 🔥 BASE URL */
-  const BASE_URL =
-    window.location.hostname === "localhost"
-      ? "http://localhost:5000"
-      : `http://${window.location.hostname}:5000`;
-
-  /* 🔥 INITIALS */
   const getInitials = (name) => {
     if (!name) return "LG";
 
-    return name
+    return String(name)
       .split(" ")
-      .map(w => w[0])
+      .map((w) => w[0])
       .join("")
-      .substring(0,3)
+      .substring(0, 3)
       .toUpperCase();
   };
 
-  /* 🔥 LOGO COMPONENT FINAL */
-  const LeagueLogo = ({ src, name }) => {
+  const getServerLogo = (url) => {
+    if (!url || failedLogos.has(url)) return "";
+    return `${BASE_URL}/logo?url=${encodeURIComponent(url)}`;
+  };
 
+  const getWeservLogo = (url) => {
+    if (!url) return "";
+    if (url.includes("images.weserv.nl")) return url;
+
+    return `https://images.weserv.nl/?url=${url.replace(
+      /^https?:\/\//,
+      ""
+    )}&w=120&h=120&fit=contain`;
+  };
+
+  const LeagueLogo = ({ src, name }) => {
+    const [logoSrc, setLogoSrc] = useState(() => getServerLogo(src));
     const [error, setError] = useState(false);
 
-    const proxyUrl = src
-      ? `${BASE_URL}/logo?url=${encodeURIComponent(src)}`
-      : null;
+    useEffect(() => {
+      setLogoSrc(getServerLogo(src));
+      setError(false);
+    }, [src]);
 
-    /* 🔥 FALLBACK (MPIRA + INITIALS) */
-    if (!src || error) {
+    if (!src || error || failedLogos.has(src)) {
       return (
         <div className="league-fallback">
           <div className="ball">⚽</div>
@@ -50,38 +63,36 @@ export default function LeagueTabs(){
 
     return (
       <img
-        src={proxyUrl}
-        alt={name}
+        src={logoSrc}
+        alt={name || "league logo"}
         className="league-logo"
         loading="lazy"
-        onError={(e)=>{
-
-          // 🔁 try direct logo
-          if (!e.target.dataset.try1 && src) {
-            e.target.dataset.try1 = "1";
-            e.target.src = src;
+        referrerPolicy="no-referrer"
+        onError={() => {
+          if (logoSrc?.includes(BASE_URL)) {
+            setLogoSrc(src);
+            return;
           }
 
-          // ❌ mwisho fallback
-          else {
-            setError(true);
+          if (logoSrc === src) {
+            setLogoSrc(getWeservLogo(src));
+            return;
           }
 
+          failedLogos.add(src);
+          setError(true);
         }}
       />
     );
   };
 
-  /* 🔥 LOAD DATA */
-  useEffect(()=>{
+  useEffect(() => {
+    const load = async () => {
+      const snap = await getDocs(collection(db, "matches"));
 
-    const load = async ()=>{
-
-      const snap = await getDocs(collection(db,"matches"));
-
-      const data = snap.docs.map(doc=>({
+      const data = snap.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data()
+        ...doc.data(),
       }));
 
       const now = Date.now();
@@ -89,65 +100,49 @@ export default function LeagueTabs(){
 
       const grouped = {};
 
-      data.forEach(match=>{
+      data.forEach((match) => {
+        if (!match.date) return;
 
-        if(!match.date) return;
+        const matchTime = new Date(
+          String(match.date).replace(" ", "T") + "Z"
+        ).getTime();
 
-        const matchTime = new Date(match.date.replace(" ","T")+"Z").getTime();
-
-        if((matchTime - now) <= fifteenMinutes) return;
+        if (matchTime - now <= fifteenMinutes) return;
 
         const leagueName = match.league || "Other";
 
-        if(!grouped[leagueName]){
+        if (!grouped[leagueName]) {
           grouped[leagueName] = {
             name: leagueName,
             logo: match.logoA || "",
-            count: 0
+            count: 0,
           };
         }
 
         grouped[leagueName].count++;
-
       });
 
       setLeagues(Object.values(grouped));
-
     };
 
     load();
+  }, []);
 
-  },[]);
-
-  return(
-
+  return (
     <div className="league-tabs">
-
-      {leagues.map((league,i)=>(
-
+      {leagues.map((league, i) => (
         <div
           key={i}
           className="league-card"
-          onClick={()=>navigate(`/league/${encodeURIComponent(league.name)}`)}
+          onClick={() => navigate(`/league/${encodeURIComponent(league.name)}`)}
         >
-
-          {/* 🔥 LOGO */}
           <LeagueLogo src={league.logo} name={league.name} />
 
-          <span className="league-name">
-            {league.name}
-          </span>
+          <span className="league-name">{league.name}</span>
 
-          <span className="league-count">
-            {league.count}
-          </span>
-
+          <span className="league-count">{league.count}</span>
         </div>
-
       ))}
-
     </div>
-
   );
-
 }

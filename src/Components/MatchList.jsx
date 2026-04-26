@@ -2,298 +2,301 @@ import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-
 import "./MatchList.css";
 
 const failedLogos = new Set();
 
-const MatchList = () => {
-
-const navigate = useNavigate();
-
-const [todayMatches,setTodayMatches] = useState([]);
-const [tomorrowMatches,setTomorrowMatches] = useState([]);
-
-const [visible,setVisible] = useState(4);
-const [tab,setTab] = useState(null);
-const [now,setNow] = useState(Date.now());
-
-/* ✅ SEARCH STATE */
-const [search,setSearch] = useState("");
-
-/* TIMER */
-useEffect(()=>{
-  const timer = setInterval(()=>{
-    setNow(Date.now());
-  },1000);
-  return ()=>clearInterval(timer);
-},[]);
-
-/* INITIALS */
-const getInitials = (name) => {
-  if (!name) return "FC";
-  return name
-    .split(" ")
-    .map(w=>w[0])
-    .join("")
-    .substring(0,3)
-    .toUpperCase();
-};
-
-/* BASE URL */
 const BASE_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:5000"
-    : `http://${window.location.hostname}:5000`;
+    : "https://cbsfootball-server.onrender.com";
 
-/* LOGO */
-const getLogo = (url) => {
-  if (url && !failedLogos.has(url)) {
-    return `${BASE_URL}/logo?url=${encodeURIComponent(url)}`;
-  }
-  return null;
-};
+const MatchList = () => {
+  const navigate = useNavigate();
 
-/* COLOR */
-const getFallbackColor = (m, side) => {
-  const aMissing = !m.logoA || failedLogos.has(m.logoA);
-  const bMissing = !m.logoB || failedLogos.has(m.logoB);
+  const [todayMatches, setTodayMatches] = useState([]);
+  const [tomorrowMatches, setTomorrowMatches] = useState([]);
+  const [visible, setVisible] = useState(4);
+  const [tab, setTab] = useState(null);
+  const [now, setNow] = useState(Date.now());
+  const [search, setSearch] = useState("");
 
-  if (aMissing && bMissing) {
-    return side === "left" ? "#000" : "#ff0000";
-  }
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setNow(Date.now());
+    }, 1000);
 
-  if (side === "left" && aMissing) return "#000";
-  if (side === "right" && bMissing) return "#000";
+    return () => clearInterval(timer);
+  }, []);
 
-  return "#000";
-};
+  const getInitials = (name) => {
+    if (!name) return "FC";
 
-/* DATE */
-const getDate = (offset = 0) => {
-  const d = new Date();
-  d.setDate(d.getDate() + offset);
-
-  const y = d.getFullYear();
-  const m = String(d.getMonth()+1).padStart(2,"0");
-  const day = String(d.getDate()).padStart(2,"0");
-
-  return `${y}-${m}-${day}`;
-};
-
-/* LOAD MATCHES */
-useEffect(()=>{
-
-  const loadMatches = async ()=>{
-
-    const snap = await getDocs(collection(db,"matches"));
-
-    let data = snap.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    }));
-
-    const fifteenMinutes = 15 * 60 * 1000;
-
-    const today = getDate(0);
-    const tomorrow = getDate(1);
-
-    const tdy = [];
-    const tmr = [];
-
-    data.forEach(m=>{
-
-      if(!m.date) return;
-
-      const matchDate = m.date.split(" ")[0];
-      const matchTime = new Date(m.date.replace(" ","T")+"Z").getTime();
-
-      const diff = matchTime - now;
-
-      if(diff <= fifteenMinutes) return;
-
-      if(matchDate === today) tdy.push(m);
-      if(matchDate === tomorrow) tmr.push(m);
-
-    });
-
-    const sortFn = (a,b)=>
-      new Date(a.date.replace(" ","T")+"Z") -
-      new Date(b.date.replace(" ","T")+"Z");
-
-    tdy.sort(sortFn);
-    tmr.sort(sortFn);
-
-    setTodayMatches(tdy);
-    setTomorrowMatches(tmr);
-
+    return String(name)
+      .split(" ")
+      .map((w) => w[0])
+      .join("")
+      .substring(0, 3)
+      .toUpperCase();
   };
 
-  loadMatches();
+  const getServerLogo = (url) => {
+    if (!url || failedLogos.has(url)) return "";
+    return `${BASE_URL}/logo?url=${encodeURIComponent(url)}`;
+  };
 
-},[now]);
+  const getWeservLogo = (url) => {
+    if (!url) return "";
+    if (url.includes("images.weserv.nl")) return url;
 
-/* FORMAT */
-const formatDateTime = (date)=>{
-  const d = new Date(date.replace(" ","T")+"Z");
+    return `https://images.weserv.nl/?url=${url.replace(
+      /^https?:\/\//,
+      ""
+    )}&w=120&h=120&fit=contain`;
+  };
 
-  return d.toLocaleString("en-GB",{
-    day:"2-digit",
-    month:"2-digit",
-    year:"numeric",
-    hour:"numeric",
-    minute:"2-digit",
-    hour12:true,
-    timeZone:"Africa/Dar_es_Salaam"
-  });
-};
+  const getFallbackColor = (m, side) => {
+    const aMissing = !m.logoA || failedLogos.has(m.logoA);
+    const bMissing = !m.logoB || failedLogos.has(m.logoB);
 
-/* COUNTDOWN */
-const getTimeLeft = (date)=>{
-  const matchTime = new Date(date.replace(" ","T")+"Z").getTime();
-  let diff = matchTime - now;
+    if (aMissing && bMissing) {
+      return side === "left" ? "#000" : "#ff0000";
+    }
 
-  if(diff <= 0) return "Starting";
+    return "#000";
+  };
 
-  const h = Math.floor(diff / (1000*60*60));
-  diff -= h * (1000*60*60);
+  const Logo = ({ src, name, match, side }) => {
+    const [logoSrc, setLogoSrc] = useState(() => getServerLogo(src));
+    const [failed, setFailed] = useState(false);
 
-  const m = Math.floor(diff / (1000*60));
-  diff -= m * (1000*60);
+    useEffect(() => {
+      setLogoSrc(getServerLogo(src));
+      setFailed(false);
+    }, [src]);
 
-  const s = Math.floor(diff / 1000);
+    if (!src || failed || failedLogos.has(src)) {
+      return (
+        <div
+          className={`logo-fallback ${side}`}
+          style={{ background: getFallbackColor(match, side) }}
+        >
+          {getInitials(name)}
+        </div>
+      );
+    }
 
-  return h > 0 ? `${h}h ${m}m ${s}s` : `${m}m ${s}s`;
-};
+    return (
+      <img
+        className={`team-logo ${side}`}
+        src={logoSrc}
+        alt={name || "team logo"}
+        loading="lazy"
+        referrerPolicy="no-referrer"
+        onError={() => {
+          if (logoSrc?.includes(BASE_URL)) {
+            setLogoSrc(src);
+            return;
+          }
 
-/* ✅ FILTERED LIST */
-const rawList = tab==="today" ? todayMatches : tomorrowMatches;
+          if (logoSrc === src) {
+            setLogoSrc(getWeservLogo(src));
+            return;
+          }
 
-const list = rawList.filter(m =>
-  m.A?.toLowerCase().includes(search.toLowerCase()) ||
-  m.B?.toLowerCase().includes(search.toLowerCase()) ||
-  m.league?.toLowerCase().includes(search.toLowerCase())
-);
+          failedLogos.add(src);
+          setFailed(true);
+        }}
+      />
+    );
+  };
 
-return(
+  const getDate = (offset = 0) => {
+    const d = new Date();
+    d.setDate(d.getDate() + offset);
 
-<div className="match-list">
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
 
-{/* HEADER */}
-<div className="title-row">
-<h3>Matches</h3>
+    return `${y}-${m}-${day}`;
+  };
 
-<button className="view-all" onClick={()=>navigate("/sports")}>
-View All ➤
-</button>
-</div>
+  useEffect(() => {
+    const loadMatches = async () => {
+      try {
+        const snap = await getDocs(collection(db, "matches"));
 
-{/* TABS */}
-<div className="tabs">
+        const data = snap.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
-<div
-className={tab==="today"?"tab active":"tab"}
-onClick={()=>{setTab("today"); setVisible(4);}}
-> 
-Today({112 + todayMatches.length}) ▷
-</div>
+        const fifteenMinutes = 15 * 60 * 1000;
+        const today = getDate(0);
+        const tomorrow = getDate(1);
 
-<div
-className={tab==="tomorrow"?"tab active":"tab"}
-onClick={()=>{setTab("tomorrow"); setVisible(4);}}
-> 
-Tomorrow({212 + tomorrowMatches.length}) ▷
-</div>
+        const tdy = [];
+        const tmr = [];
+        const currentTime = Date.now();
 
-</div>
+        data.forEach((m) => {
+          if (!m.date) return;
 
-{/* ✅ SEARCH INPUT */}
-{tab && (
-<input
-  type="text"
-  placeholder="Search team or league..."
-  value={search}
-  onChange={(e)=>setSearch(e.target.value)}
-  className="search-input"
-/>
-)}
+          const matchDate = String(m.date).split(" ")[0];
+          const matchTime = new Date(
+            String(m.date).replace(" ", "T") + "Z"
+          ).getTime();
 
-{/* LIST */}
-{tab && list.slice(0,visible).map((m,i)=>{
+          if (!matchTime) return;
 
-const logoA = getLogo(m.logoA);
-const logoB = getLogo(m.logoB);
+          const diff = matchTime - currentTime;
 
-return(
+          if (diff <= fifteenMinutes) return;
 
-<div 
-className="match-card"
-key={m.id || i}
-onClick={()=>navigate(`/betscores/${m.id}`,{ state:m })}
-style={{cursor:"pointer"}}
->
+          if (matchDate === today) tdy.push(m);
+          if (matchDate === tomorrow) tmr.push(m);
+        });
 
-<div className="time-left">
-{tab==="today" ? getTimeLeft(m.date) : formatDateTime(m.date)}
-</div>
+        const sortFn = (a, b) =>
+          new Date(String(a.date).replace(" ", "T") + "Z") -
+          new Date(String(b.date).replace(" ", "T") + "Z");
 
-<div className="logo-box">
-{logoA ? (
-<img 
-  className="team-logo left" 
-  src={logoA}
-  onError={() => failedLogos.add(m.logoA)}
-/>
-) : (
-<div className="logo-fallback left" style={{background:getFallbackColor(m,"left")}}>
-{getInitials(m.A)}
-</div>
-)}
-</div>
+        tdy.sort(sortFn);
+        tmr.sort(sortFn);
 
-<div className="match-info">
-<div className="teams">{m.A} VS {m.B}</div>
-<div className="league">{m.league}</div>
-</div>
+        setTodayMatches(tdy);
+        setTomorrowMatches(tmr);
+      } catch (err) {
+        console.error("Load matches error:", err);
+      }
+    };
 
-<div className="logo-box">
-{logoB ? (
-<img 
-  className="team-logo right" 
-  src={logoB}
-  onError={() => failedLogos.add(m.logoB)}
-/>
-) : (
-<div className="logo-fallback right" style={{background:getFallbackColor(m,"right")}}>
-{getInitials(m.B)}
-</div>
-)}
-</div>
+    loadMatches();
+  }, []);
 
-</div>
+  const formatDateTime = (date) => {
+    const d = new Date(String(date).replace(" ", "T") + "Z");
 
-);
+    return d.toLocaleString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+      timeZone: "Africa/Dar_es_Salaam",
+    });
+  };
 
-})}
+  const getTimeLeft = (date) => {
+    const matchTime = new Date(String(date).replace(" ", "T") + "Z").getTime();
+    let diff = matchTime - now;
 
-{/* SEE MORE */}
-{tab && visible < list.length && (
-<div className="more-btn" onClick={()=>setVisible(v=>v+4)}>
-SeeMore
-</div>
-)}
+    if (diff <= 0) return "Starting";
 
-{/* EMPTY */}
-{tab && list.length === 0 && (
-<div style={{padding:"10px"}}>
-Loading... matches 
-</div>
-)}
+    const h = Math.floor(diff / (1000 * 60 * 60));
+    diff -= h * (1000 * 60 * 60);
 
-</div>
+    const m = Math.floor(diff / (1000 * 60));
+    diff -= m * (1000 * 60);
 
-);
+    const s = Math.floor(diff / 1000);
 
+    return h > 0 ? `${h}h ${m}m ${s}s` : `${m}m ${s}s`;
+  };
+
+  const rawList = tab === "today" ? todayMatches : tomorrowMatches;
+
+  const list = rawList.filter(
+    (m) =>
+      m.A?.toLowerCase().includes(search.toLowerCase()) ||
+      m.B?.toLowerCase().includes(search.toLowerCase()) ||
+      m.league?.toLowerCase().includes(search.toLowerCase())
+  );
+
+  return (
+    <div className="match-list">
+      <div className="title-row">
+        <h3>Matches</h3>
+
+        <button className="view-all" onClick={() => navigate("/sports")}>
+          View All ➤
+        </button>
+      </div>
+
+      <div className="tabs">
+        <div
+          className={tab === "today" ? "tab active" : "tab"}
+          onClick={() => {
+            setTab("today");
+            setVisible(4);
+          }}
+        >
+          Today({112 + todayMatches.length}) ▷
+        </div>
+
+        <div
+          className={tab === "tomorrow" ? "tab active" : "tab"}
+          onClick={() => {
+            setTab("tomorrow");
+            setVisible(4);
+          }}
+        >
+          Tomorrow({212 + tomorrowMatches.length}) ▷
+        </div>
+      </div>
+
+      {tab && (
+        <input
+          type="text"
+          placeholder="Search team or league..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="search-input"
+        />
+      )}
+
+      {tab &&
+        list.slice(0, visible).map((m, i) => (
+          <div
+            className="match-card"
+            key={m.id || i}
+            onClick={() => navigate(`/betscores/${m.id}`, { state: m })}
+            style={{ cursor: "pointer" }}
+          >
+            <div className="time-left">
+              {tab === "today" ? getTimeLeft(m.date) : formatDateTime(m.date)}
+            </div>
+
+            <div className="logo-box">
+              <Logo src={m.logoA} name={m.A} match={m} side="left" />
+            </div>
+
+            <div className="match-info">
+              <div className="teams">
+                {m.A} VS {m.B}
+              </div>
+              <div className="league">{m.league}</div>
+            </div>
+
+            <div className="logo-box">
+              <Logo src={m.logoB} name={m.B} match={m} side="right" />
+            </div>
+          </div>
+        ))}
+
+      {tab && visible < list.length && (
+        <div className="more-btn" onClick={() => setVisible((v) => v + 4)}>
+          SeeMore
+        </div>
+      )}
+
+      {tab && list.length === 0 && (
+        <div style={{ padding: "10px" }}>Loading... matches</div>
+      )}
+    </div>
+  );
 };
 
 export default MatchList;

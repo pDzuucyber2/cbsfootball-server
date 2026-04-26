@@ -12,10 +12,15 @@ import "./index.css";
 
 // ================= COMPONENTS =================
 import BottomNav from "./Components/BottomNav";
-import InstallButton from "./Components/InstallButton";
+
+import InstallButton from "./Components/InstallButton.jsx";
+
 import PosterTemplate from "./Components/PosterTemplate";
 import SpecialGames from "./Components/SpecialGames";
 import AboutContraBetScore from "./Components/AboutContraBetScore";
+
+
+
 
 
 import TopBar from "./Components/TopBar";
@@ -112,7 +117,7 @@ const ConfirmDeposit = lazy(() => import("./pages/ConfirmDeposit"));
 const ConfirmDeposits = lazy(() => import("./pages/ConfirmDeposits"));
 const VipPage = lazy(() => import("./pages/VipPage"));
 const  CasinoLuckySpin = lazy(() => import("./pages/CasinoLuckySpin"));
-
+const  AppDownload = lazy(() => import("./pages/AppDownload"));
 
 
 const Login = lazy(() => import("./pages/Login"));
@@ -185,6 +190,8 @@ const AviatorSpin = lazy(() => import("./pages/AviatorSpin"));
 const ResponsibleGaming = lazy(() => import("./pages/ResponsibleGaming"));
 const AdminGenerationMatches = lazy(() => import("./pages/AdminGenerationMatches"));
 const AdminSweepWallet = lazy(() => import("./pages/AdminSweepWallet"));
+
+
 
 
 
@@ -306,19 +313,21 @@ const LayoutWithBottomNav = ({ children }) => {
     <>
       {!shouldHideTopBar && isLoggedIn && <TopBar />}
 
-      <div
+          <div
         style={{
-          paddingBottom: !shouldHideBottomNav && isLoggedIn ? "70px" : "0",
+          paddingTop: !shouldHideTopBar ? "60px" : "0px",
+          paddingBottom: isLoggedIn && !shouldHideBottomNav ? "70px" : "0px",
         }}
       >
         {children}
       </div>
 
-      {!shouldHideBottomNav && isLoggedIn && <BottomNav />}
+      {isLoggedIn && !shouldHideBottomNav && <BottomNav />}
+
+      <InstallButton />
     </>
   );
 };
-
 // ================= APP =================
 const App = () => {
   const [language, setLanguage] = useState("en");
@@ -371,7 +380,7 @@ const App = () => {
 <Route path="/about-contra-bet-score" element={<AboutContraBetScore />} />
 <Route path="/terms" element={<Terms />} />
  <Route path="/cookies" element={<Cookies />} />
-
+<Route path="/download" element={<AppDownload/>} />
 
 
 

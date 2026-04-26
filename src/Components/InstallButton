@@ -1,0 +1,68 @@
+import React, { useEffect, useState } from "react";
+import { FaDownload } from "react-icons/fa";
+
+const InstallButton = () => {
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [isInstalled, setIsInstalled] = useState(false);
+
+  useEffect(() => {
+    const handleBeforeInstall = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+
+    const handleInstalled = () => {
+      setIsInstalled(true);
+      setDeferredPrompt(null);
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstall);
+    window.addEventListener("appinstalled", handleInstalled);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstall);
+      window.removeEventListener("appinstalled", handleInstalled);
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+
+    if (outcome === "accepted") {
+      setIsInstalled(true);
+    }
+
+    setDeferredPrompt(null);
+  };
+
+  // ❌ usionyeshe kama tayari installed au hakuna prompt
+  if (!deferredPrompt || isInstalled) return null;
+
+  return (
+    <div
+      onClick={handleInstallClick}
+      style={{
+        position: "fixed",
+        bottom: 80, // juu kidogo ya bottom nav
+        right: 15,
+        width: 50,
+        height: 50,
+        borderRadius: "50%",
+        background: "linear-gradient(135deg, #00c853, #00e676)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
+        cursor: "pointer",
+        zIndex: 9999,
+      }}
+    >
+      <FaDownload color="#fff" size={20} />
+    </div>
+  );
+};
+
+export default InstallButton;

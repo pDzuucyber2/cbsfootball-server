@@ -1,21 +1,15 @@
-
 import { useEffect, useState } from "react";
-import { db } from "../firebase";
-import { collection, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import "./Sports.css";
 
-/* 🔥 CACHE YA LOGO MBOVU */
 const failedLogos = new Set();
 
-/* ✅ BASE COUNTS */
 const BASE_COUNTS = {
   upcoming: 289,
   popular: 89,
-  all: 1235
+  all: 1235,
 };
 
-/* ✅ BACKEND SERVER YA LOGO PROXY */
 const SERVER_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:5000"
@@ -40,22 +34,27 @@ export default function Sports() {
       .toUpperCase();
   };
 
+  const parseDate = (date) => {
+    if (!date) return 0;
+    const time = new Date(String(date).replace(" ", "T") + "Z").getTime();
+    return Number.isNaN(time) ? 0 : time;
+  };
+
   useEffect(() => {
     const loadMatches = async () => {
-      const snap = await getDocs(collection(db, "matches"));
+      try {
+        const res = await fetch(`${SERVER_URL}/matches`);
+        const json = await res.json();
 
-      let data = snap.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+        let data = json.matches || json.data || [];
 
-      data.sort((a, b) => {
-        const da = new Date(a.date.replace(" ", "T") + "Z").getTime();
-        const dbb = new Date(b.date.replace(" ", "T") + "Z").getTime();
-        return da - dbb;
-      });
+        data.sort((a, b) => parseDate(a.date) - parseDate(b.date));
 
-      setMatches(data);
+        setMatches(data);
+      } catch (err) {
+        console.error("Failed to load matches from server:", err);
+        setMatches([]);
+      }
     };
 
     loadMatches();
@@ -66,12 +65,12 @@ export default function Sports() {
   const fifteenMinutes = 15 * 60 * 1000;
 
   const allMatches = matches.filter((m) => {
-    const matchTime = new Date(m.date.replace(" ", "T") + "Z").getTime();
+    const matchTime = parseDate(m.date);
     return matchTime > now && matchTime < now + thirtyDays;
   });
 
   const upcoming = matches.filter((m) => {
-    const matchTime = new Date(m.date.replace(" ", "T") + "Z").getTime();
+    const matchTime = parseDate(m.date);
     return matchTime - now > fifteenMinutes;
   });
 
@@ -90,7 +89,9 @@ export default function Sports() {
   );
 
   const formatTime = (date) => {
-    const d = new Date(date.replace(" ", "T") + "Z");
+    const d = new Date(String(date).replace(" ", "T") + "Z");
+
+    if (Number.isNaN(d.getTime())) return "-";
 
     return d.toLocaleString("en-US", {
       timeZone: timezone,
@@ -104,11 +105,28 @@ export default function Sports() {
   };
 
   const Logo = ({ src, name, match, side }) => {
+    const [logoSrc, setLogoSrc] = useState(src || "");
     const [error, setError] = useState(false);
 
-    const proxyUrl = src
-      ? `${SERVER_URL}/logo?url=${encodeURIComponent(src)}`
-      : null;
+    const makeServerLogo = (url) => {
+      if (!url) return "";
+      return `${SERVER_URL}/logo?url=${encodeURIComponent(url)}`;
+    };
+
+    const makeWeservUrl = (url) => {
+      if (!url) return "";
+      if (url.includes("images.weserv.nl")) return url;
+
+      return `https://images.weserv.nl/?url=${url.replace(
+        /^https?:\/\//,
+        ""
+      )}&w=120&h=120&fit=contain`;
+    };
+
+    useEffect(() => {
+      setLogoSrc(makeServerLogo(src));
+      setError(false);
+    }, [src]);
 
     const aMissing = !match.logoA || failedLogos.has(match.logoA);
     const bMissing = !match.logoB || failedLogos.has(match.logoB);
@@ -130,13 +148,15 @@ export default function Sports() {
     return (
       <img
         className="team-logo"
-        src={proxyUrl}
+        src={logoSrc}
         alt={name}
         loading="lazy"
-        onError={(e) => {
-          if (!e.target.dataset.try1 && src) {
-            e.target.dataset.try1 = "1";
-            e.target.src = src;
+        referrerPolicy="no-referrer"
+        onError={() => {
+          if (logoSrc.includes(SERVER_URL)) {
+            setLogoSrc(src);
+          } else if (logoSrc === src) {
+            setLogoSrc(makeWeservUrl(src));
           } else {
             failedLogos.add(src);
             setError(true);

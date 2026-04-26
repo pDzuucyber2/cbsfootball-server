@@ -302,7 +302,7 @@ export default function VipMenu() {
 
         <div className="vip-item" onClick={() => navigate("/download")}>
           ⬇️
-          <p>Download</p>
+          <p>AppDownload</p>
         </div>
 
 
