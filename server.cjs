@@ -88,6 +88,20 @@ const isValidIndex = (index) => {
   return Number.isInteger(n) && n >= 0 && n <= 2147483647;
 };
 
+
+
+const admin = require("firebase-admin");
+
+const serviceAccount = require("./contrabetssore-cbc-firebase-adminsdk-fbsvc-4abaddd073.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
+
+const firestoreDb = admin.firestore();
+
+
+
 function getETHWallet(index) {
   const path = `m/44'/60'/0'/0/${index}`;
   const wallet = ethers.HDNodeWallet.fromPhrase(MNEMONIC, undefined, path);
@@ -252,6 +266,52 @@ async function sendUSDTTRC20(fromIndex, toAddress, amount) {
     feeLimit: 100_000_000,
   });
 }
+
+
+let cachedMatches = [];
+let lastMatchesFetch = 0;
+
+const MATCH_CACHE_TIME = 5 * 60 * 60 * 1000; // masaa 5
+
+
+ async function loadMatchesFromFirestore() {
+  const snap = await firestoreDb.collection("matches").get();
+
+  const now = Date.now();
+  const fifteenMinutes = 15 * 60 * 1000;
+  const thirtyDays = 30 * 24 * 60 * 60 * 1000;
+
+  cachedMatches = snap.docs
+    .map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }))
+    .filter((m) => {
+      if (!m.date) return false;
+
+      const matchTime = new Date(
+        String(m.date).replace(" ", "T") + "Z"
+      ).getTime();
+
+      if (Number.isNaN(matchTime)) return false;
+
+      return (
+        matchTime - now > fifteenMinutes &&
+        matchTime < now + thirtyDays
+      );
+    });
+
+  cachedMatches.sort((a, b) => {
+    const da = new Date(String(a.date || "").replace(" ", "T") + "Z").getTime();
+    const db = new Date(String(b.date || "").replace(" ", "T") + "Z").getTime();
+    return da - db;
+  });
+
+  lastMatchesFetch = Date.now();
+
+  console.log(`✅ Upcoming matches cache updated: ${cachedMatches.length}`);
+}
+
 
 /* =======================
    ROUTES
@@ -537,6 +597,32 @@ app.post("/admin/sweep-usdt-trc20-to-main", async (req, res) => {
   }
 });
 
+
+app.get("/matches", async (req, res) => {
+  try {
+    const expired = Date.now() - lastMatchesFetch > MATCH_CACHE_TIME;
+
+    if (cachedMatches.length === 0 || expired) {
+      await loadMatchesFromFirestore();
+    }
+
+    res.json({
+      success: true,
+      updatedAt: lastMatchesFetch,
+      total: cachedMatches.length,
+      matches: cachedMatches,
+    });
+  } catch (err) {
+    console.error("MATCHES ERROR:", err);
+    res.status(500).json({
+      success: false,
+      error: "Failed to load matches",
+      details: err.message,
+    });
+  }
+});
+
+
 app.post("/admin/sweep-tron", async (req, res) => {
   try {
     const { fromIndex, coin, amount } = req.body;
@@ -693,6 +779,39 @@ app.get("/logo", async (req, res) => {
     res.status(500).send("Error loading image");
   }
 });
+
+
+app.post("/admin/refresh-matches", async (req, res) => {
+  try {
+    await loadMatchesFromFirestore();
+
+    res.json({
+      success: true,
+      message: "Matches refreshed successfully",
+      updatedAt: lastMatchesFetch,
+      total: cachedMatches.length,
+    });
+  } catch (err) {
+    console.error("REFRESH MATCHES ERROR:", err);
+    res.status(500).json({
+      success: false,
+      error: "Failed to refresh matches",
+      details: err.message,
+    });
+  }
+});
+
+loadMatchesFromFirestore().catch((err) => {
+  console.error("Initial matches cache error:", err.message);
+});
+
+setInterval(() => {
+  loadMatchesFromFirestore().catch((err) => {
+    console.error("Auto matches cache error:", err.message);
+  });
+}, MATCH_CACHE_TIME);
+
+
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);

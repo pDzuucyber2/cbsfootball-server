@@ -225,6 +225,9 @@ const PendingWithdrawals = lazy(() => import("./pages/PendingWithdrawals"));
 const AdminUserSearch = lazy(() => import("./pages/AdminUserSearch"));
 const AdminUsersMember = lazy(() => import("./pages/AdminUsersMember"));
 const AdminExchanges = lazy(() => import("./pages/AdminExchanges"));
+const AdminRefrashMatchesByServer = lazy(() => import("./pages/AdminRefrashMatchesByServer"));
+
+
 
 const AdminBadilishaMudaWaMatches = lazy(() => import("./pages/AdminBadilishaMudaWaMatches"));
 
@@ -1753,6 +1756,14 @@ const App = () => {
               }
             />
 
+ <Route
+              path="/admin/refresh-matches"
+              element={
+                <AdminRoute>
+                  <AdminRefrashMatchesByServer />
+                </AdminRoute>
+              }
+            />
 
    
 

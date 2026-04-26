@@ -81,7 +81,8 @@ const AdminDashboard = () => {
           <Link to="/Admin-UserBonus"><button style={buttonStyle}>AdminUserBonus</button></Link>
           <Link to="/Admin-DuplicateMatches"><button style={buttonStyle}>Today/Tommorrow/Time</button></Link>
           <Link to="/admin-sweep-wallet"><button style={buttonStyle}>AdminSweepWallet</button></Link>
-          
+          <Link to="/admin/refresh-matches"><button style={buttonStyle}>AdminRefrashMatchesByServer</button></Link>
+        
 
         </div>
       </div>
